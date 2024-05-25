@@ -13,6 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import {  HttpClientModule } from '@angular/common/http';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -27,7 +31,11 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatIconModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
