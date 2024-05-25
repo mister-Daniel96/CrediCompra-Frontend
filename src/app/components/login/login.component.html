@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="form ">
+        <i class="fa-solid fa-user img-user"></i>
+        <h2 class="title-user">Login</h2>
+        <form class="example-form table-form" [formGroup]="form">
+            <mat-form-field class="example-full-width">
+                <mat-label>Username</mat-label>
+                <input formControlName="nameUsuario" matInput placeholder="Username">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input formControlName="passwordUsuario" matInput [type]="hide ? 'password' : 'text'">
+
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="login()">
+                Ingresar</button>
+        </form>
+        <!--  <input type="text" [(ngModel)]="username">
+        <input type="text" [(ngModel)]="password">
+        <button mat-raised-button color="primary" (click)="login()">
+            Ingresar</button> -->
+        <button mat-flat-button color="basic" class="btnRegistrar" routerLink="/register">
+            ¿No tienes una cuenta? <span>Registrate</span>
+        </button>
+    </div>
+</body>
+</html>
