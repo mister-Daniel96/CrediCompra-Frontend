@@ -1,0 +1,26 @@
+*{
+  background-color: #1D1C28;
+}
+.containerLogin{
+  display: flex;
+  height: 100vh;
+}
+.img{
+  background-color: #292834;
+  display: flex;
+  padding: 100px 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.img img{
+  background-color: #292834;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
