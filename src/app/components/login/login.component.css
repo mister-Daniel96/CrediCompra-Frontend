@@ -4,16 +4,22 @@
 .containerLogin{
   display: flex;
   height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 .img{
   background-color: #292834;
   display: flex;
-  padding: 100px 20px;
+  height: 100%;
+  width: 70%;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 .img img{
+  max-width: 100%;
+  margin: 50px;
+  height: auto;
   background-color: #292834;
 }
 .form{
@@ -23,4 +29,13 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+.mat-form-field {
+  width: 100%;
+}
+
+.form form{
+  display: flex;
+  max-width: 100%;
+  height: auto;
 }
