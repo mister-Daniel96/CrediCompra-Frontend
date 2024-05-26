@@ -5,24 +5,24 @@
 
 
     <mat-nav-list>
-      <button class="btnMenu" [routerLink]="['/components/cliente',id,'mispagos']">
+      <button class="btnMenu" [routerLink]="['/components/cliente',id,'mispagos']"(click)="toggleSidenav()">
         Mi perfil
         <i class="fa-regular fa-user" ></i>
       </button>
-      <button class="btnMenu" [routerLink]="['/components/cliente',id,'miInfo']">
+      <button class="btnMenu" [routerLink]="['/components/cliente',id,'miInfo']"(click)="toggleSidenav()">
         Mis pagos
         <i class="fa-regular fa-user" ></i>
       </button>
-      <button class="btnMenu" [routerLink]="['/components/cliente',id,'miInfo']">
+      <button class="btnMenu" [routerLink]="['/components/cliente',id,'miInfo']"(click)="toggleSidenav()">
         Opcion 1
         <i class="fa-regular fa-user" ></i>
       </button>
-      <button class="btnMenu" [routerLink]="['/components/cliente',id,'miInfo']">
+      <button class="btnMenu" [routerLink]="['/components/cliente',id,'miInfo']"(click)="toggleSidenav()">
         Opcion 2
         <i class="fa-regular fa-user" ></i>
       </button>
 
-      <button class="btnMenu" [routerLink]="['/components/cliente',id,'miInfo']">
+      <button class="btnMenu"  routerLink="/login" (click)="cerrar()">
         Cerrar sesion
         <i class="fa-regular fa-user" style="color: #ffffff;"></i>
         </button>
@@ -37,7 +37,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>CrediCompra-Frontend</span>
+      <span>CrediCompra</span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

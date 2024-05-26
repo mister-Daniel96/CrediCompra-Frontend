@@ -11,6 +11,10 @@ import { MatListModule } from '@angular/material/list';
 import { ClienteComponent } from './cliente/cliente.component';
 import { MispagosComponent } from './cliente/mispagos/mispagos.component';
 import { MiInfoComponent } from './cliente/mi-info/mi-info.component';
+import { DashboardComponent } from './administrador/dashboard/dashboard.component';
+import { CalcularTasasComponent } from './administrador/calcular-tasas/calcular-tasas.component';
+import { ProximosPagosComponent } from './administrador/proximos-pagos/proximos-pagos.component';
+import { RegistrarClientesComponent } from './administrador/registrar-clientes/registrar-clientes.component';
 
 
 
@@ -19,7 +23,11 @@ import { MiInfoComponent } from './cliente/mi-info/mi-info.component';
     AdministradorComponent,
     ClienteComponent,
     MispagosComponent,
-    MiInfoComponent
+    MiInfoComponent,
+    DashboardComponent,
+    CalcularTasasComponent,
+    ProximosPagosComponent,
+    RegistrarClientesComponent
   ],
   imports: [
     CommonModule,

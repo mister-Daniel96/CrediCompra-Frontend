@@ -5,27 +5,30 @@
 
 
     <mat-nav-list>
-      <button class="btnMenu" [routerLink]="['/components/administrador',id,'mispagos']">
-        Mi perfil
+      <button class="btnMenu" [routerLink]="['/components/administrador',id,'dashboard']"(click)="toggleSidenav()">
+        Dashboard
         <i class="fa-regular fa-user" ></i>
       </button>
-      <button class="btnMenu" [routerLink]="['/components/administrador',id,'miInfo']">
-        Mis pagos
+      <button class="btnMenu" [routerLink]="['/components/administrador',id,'calcularTasas']"(click)="toggleSidenav()">
+        Calcular Tasas
         <i class="fa-regular fa-user" ></i>
       </button>
-      <button class="btnMenu" [routerLink]="['/components/administrador',id,'miInfo']">
-        Opcion 1
+      <button class="btnMenu" [routerLink]="['/components/administrador',id,'proximosPagos']"(click)="toggleSidenav()">
+        Proximos pagos
         <i class="fa-regular fa-user" ></i>
       </button>
-      <button class="btnMenu" [routerLink]="['/components/administrador',id,'miInfo']">
-        Opcion 2
+      <button class="btnMenu" [routerLink]="['/components/administrador',id,'registrarCliente']"(click)="toggleSidenav()">
+        Registrar cliente
         <i class="fa-regular fa-user" ></i>
       </button>
 
-      <button class="btnMenu" [routerLink]="['/components/cliente',id,'miInfo']">
+      <button class="btnMenu"  routerLink="/login" (click)="cerrar()">
         Cerrar sesion
         <i class="fa-regular fa-user" style="color: #ffffff;"></i>
         </button>
+      <!-- <a mat-list-item href="components/cliente/1/mispagos">Link 1</a>
+      <a mat-list-item href="components/cliente/1/miInfo">Link 2</a>
+      <a mat-list-item href="#">Link 3</a> -->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -34,7 +37,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>CrediCompra-Frontend</span>
+      <span>CrediCompra</span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

@@ -6,36 +6,39 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <div class="form ">
+    <div class="containerLogin">
+      <div class="img">
+        <img src="/assets/loginImg.png" alt="">
+      </div>
+      <div class="form">
         <i class="fa-solid fa-user img-user"></i>
-        <h2 class="title-user">Login</h2>
-        <form class="example-form table-form" [formGroup]="form">
-            <mat-form-field class="example-full-width">
-                <mat-label>Username</mat-label>
-                <input formControlName="nameUsuario" matInput placeholder="Username">
-            </mat-form-field>
+        <h2 class="title-user" style="color: white;  padding: 30px; font-family: Calibri; margin-bottom: 50px">CrediCompra</h2>
+        <form class="example-form table-form" [formGroup]="form" style="display: flex; flex-direction: column; max-width: 100%; height: auto">
+          <mat-form-field class="example-full-width">
+            <mat-label style="background-color: transparent">Correo</mat-label>
+            <input formControlName="nameUsuario" matInput placeholder="Username">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label style="background-color: transparent">Contraseña</mat-label>
+            <input formControlName="passwordUsuario" matInput [type]="hide ? 'password' : 'text'">
 
-            <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input formControlName="passwordUsuario" matInput [type]="hide ? 'password' : 'text'">
-
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            </mat-form-field>
+              <mat-icon style="background-color: transparent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
 
-            <button mat-raised-button color="primary" (click)="login()">
-                Ingresar</button>
+          <button mat-raised-button color="primary" (click)="login()" style="background-color: #9A37DC; border-radius: 30px; height: 60px">
+            Iniciar Sesión</button>
         </form>
         <!--  <input type="text" [(ngModel)]="username">
         <input type="text" [(ngModel)]="password">
         <button mat-raised-button color="primary" (click)="login()">
             Ingresar</button> -->
-        <button mat-flat-button color="basic" class="btnRegistrar" routerLink="/register">
-            ¿No tienes una cuenta? <span>Registrate</span>
+        <button mat-flat-button color="basic" class="btnRegistrar" routerLink="/register" style="color: #77777E; font-size: 18px; margin-top: 20px">
+          Registrare Aquí
         </button>
+      </div>
     </div>
 </body>
 </html>
