@@ -11,7 +11,6 @@
         <img src="/assets/images/loginImg.png" alt="">
       </div>
       <div class="form">
-        <i class="fa-solid fa-user img-user"></i>
         <h2 class="title-user" style="color: white;  padding: 30px; font-family: Calibri; margin-bottom: 50px">CrediCompra</h2>
         <form class="example-form table-form" [formGroup]="form" style="display: flex; flex-direction: column; max-width: 100%; height: auto">
           <mat-form-field class="example-full-width">
@@ -28,15 +27,16 @@
             </button>
           </mat-form-field>
 
-          <button mat-raised-button color="primary" (click)="login()" style="background-color: #9A37DC; border-radius: 30px; height: 60px">
-            Iniciar Sesión</button>
+          <button mat-raised-button color="primary" (click)="login()" style="background-color: #9A37DC; border-radius: 30px; height: 60px; font-size: 18px">
+            Iniciar Sesión
+          </button>
         </form>
         <!--  <input type="text" [(ngModel)]="username">
         <input type="text" [(ngModel)]="password">
         <button mat-raised-button color="primary" (click)="login()">
             Ingresar</button> -->
         <button mat-flat-button color="basic" class="btnRegistrar" routerLink="/register" style="color: #77777E; font-size: 18px; margin-top: 20px">
-          Registrare Aquí
+          Registrarse Aquí
         </button>
       </div>
     </div>
