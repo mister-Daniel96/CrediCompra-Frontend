@@ -8,7 +8,11 @@
   width: 200px;
   background-color: #1D1C28;
   color: whitesmoke;
+  padding: 10px 0 0 0;
+}
 
+.nav-list{
+  padding: 50px 0 0 0;
 }
 
 .sidenav .mat-toolbar {
@@ -21,28 +25,38 @@
   z-index: 1;
 }
 
-
-
 .btnMenu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   width: 95%;
   color: grey;
-  padding: 25px 0px;
+  margin: 15px 0;
+  padding: 20px 10px 20px 25px;
   border: none;
-  transition: 0.2s all;
+  transition: 0.3s all;
   background-color: transparent;
-  font-size: 1rem;
-  display: flex;
-  justify-content: space-around;
-
+  font-size: 15px;
 }
 
-/* .btnMenu:nth-child(5) {
-  margin-top: 100%;
-} */
+.btnMenu:nth-child(5) {
+  margin-top: 280px;
+}
 
-.btnMenu:hover ::content {
+.btnMenu:hover {
   transform: scale(1.1);
   color: blueviolet;
   font-weight: bold;
   background-color: #312f42;
+}
+
+.btn-text {
+  font-size: 14px;
+  margin: 2px 0 0 0;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
