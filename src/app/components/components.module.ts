@@ -15,6 +15,7 @@ import { DashboardComponent } from './administrador/dashboard/dashboard.componen
 import { CalcularTasasComponent } from './administrador/calcular-tasas/calcular-tasas.component';
 import { ProximosPagosComponent } from './administrador/proximos-pagos/proximos-pagos.component';
 import { RegistrarClientesComponent } from './administrador/registrar-clientes/registrar-clientes.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -37,10 +38,11 @@ import { RegistrarClientesComponent } from './administrador/registrar-clientes/r
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule, //me causaba problema sino lo importo es para el routerLink[]
-  
+    MatListModule,
+    FormsModule,
+    //me causaba problema sino lo importo es para el routerLink[]
 
-    
+
   ],
 })
 export class ComponentsModule {}

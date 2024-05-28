@@ -1,13 +1,15 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar style="display: flex;justify-content: center;color: whitesmoke;">Menu</mat-toolbar>
+    <mat-toolbar style="display: flex; justify-content: center; color: whitesmoke;">Menu</mat-toolbar>
 
     <mat-nav-list class="nav-list">
       <button
         *ngFor="let boton of botones"
         class="btnMenu"
         [routerLink]="['/components/administrador', id, boton.ruta]"
+        routerLinkActive="active"
+        [ngClass]="{'active': isLinkActive(boton.ruta)}"
         (click)="toggleSidenav()"
       >
         <img [src]="boton.icon" alt="{{ boton.texto }}" class="user-icon">
@@ -22,8 +24,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-              *ngIf="isHandset$ | async">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>CrediCompra</span>

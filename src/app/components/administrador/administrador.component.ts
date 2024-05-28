@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -29,7 +29,7 @@ export class AdministradorComponent implements OnInit {
     { texto: 'Registrar cliente', ruta: 'registrarCliente', icon: './assets/images/cuentas.png' }
   ];
 
-  constructor(public route: ActivatedRoute) {}
+  constructor(public route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
@@ -46,6 +46,8 @@ export class AdministradorComponent implements OnInit {
       this.drawer.toggle();
     }
   }
-  // Declara drawer como ViewChild de MatSidenav
-  //Se crea la funcion toggleSidenav y se agrega en cada boton
+
+  isLinkActive(ruta: string): boolean {
+    return this.router.url.includes(ruta);
+  }
 }

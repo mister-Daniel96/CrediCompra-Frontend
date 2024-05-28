@@ -1,3 +1,4 @@
+/* dashboard.component.css */
 .sidenav-container {
   height: 100%;
   background-color: #1D1C28;
@@ -11,7 +12,7 @@
   padding: 10px 0 0 0;
 }
 
-.nav-list{
+.nav-list {
   padding: 50px 0 0 0;
 }
 
@@ -48,6 +49,11 @@
   color: blueviolet;
   font-weight: bold;
   background-color: #312f42;
+}
+
+.btnMenu.active {
+  color: blueviolet;
+  font-weight: bold;
 }
 
 .btn-text {
