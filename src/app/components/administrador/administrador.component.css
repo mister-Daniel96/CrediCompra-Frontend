@@ -10,6 +10,7 @@
   background-color: #1D1C28;
   color: whitesmoke;
   padding: 10px 0 0 0;
+  border-right: 1px solid rgba(245, 245, 245, 0.329);
 }
 
 .nav-list {
