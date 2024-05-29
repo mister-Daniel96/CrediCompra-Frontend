@@ -16,6 +16,7 @@ import { CalcularTasasComponent } from './administrador/calcular-tasas/calcular-
 import { ProximosPagosComponent } from './administrador/proximos-pagos/proximos-pagos.component';
 import { RegistrarClientesComponent } from './administrador/registrar-clientes/registrar-clientes.component';
 import {FormsModule} from "@angular/forms";
+import { ListarClientesComponent } from './administrador/listar-clientes/listar-clientes.component';
 
 
 
@@ -28,7 +29,8 @@ import {FormsModule} from "@angular/forms";
     DashboardComponent,
     CalcularTasasComponent,
     ProximosPagosComponent,
-    RegistrarClientesComponent
+    RegistrarClientesComponent,
+    ListarClientesComponent
   ],
   imports: [
     CommonModule,

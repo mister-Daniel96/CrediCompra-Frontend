@@ -26,7 +26,7 @@ export class AdministradorComponent implements OnInit {
     { texto: 'Dashboard', ruta: 'dashboard', icon: './assets/images/dashboard.png' },
     { texto: 'Calcular Tasas', ruta: 'calcularTasas', icon: './assets/images/calculadora.png' },
     { texto: 'Proximos pagos', ruta: 'proximosPagos', icon: './assets/images/pagos.png' },
-    { texto: 'Registrar cliente', ruta: 'registrarCliente', icon: './assets/images/cuentas.png' }
+    { texto: 'Listar Clientes', ruta: 'listarClientes', icon: './assets/images/cuentas.png' }
   ];
 
   constructor(public route: ActivatedRoute, private router: Router) {}
