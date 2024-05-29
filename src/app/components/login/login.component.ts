@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           if (this.loginService.showRole() == 'CLIENTE') {
             this.router.navigate([`components/cliente/${this.id}`]);
           } else if (this.loginService.showRole() == 'ADMINISTRADOR') {
-            this.router.navigate([`components/administrator/${this.id}`]);
+            this.router.navigate([`components/administrador/${this.id}`]);
           }
         });
       },

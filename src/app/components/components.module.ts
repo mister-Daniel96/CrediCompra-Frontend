@@ -15,10 +15,14 @@ import { DashboardComponent } from './administrador/dashboard/dashboard.componen
 import { CalcularTasasComponent } from './administrador/calcular-tasas/calcular-tasas.component';
 import { ProximosPagosComponent } from './administrador/proximos-pagos/proximos-pagos.component';
 import { RegistrarClientesComponent } from './administrador/registrar-clientes/registrar-clientes.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListarClientesComponent } from './administrador/listar-clientes/listar-clientes.component';
-
-
+import { EditarClientesComponent } from './administrador/editar-clientes/editar-clientes.component';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { ListarClientesComponent } from './administrador/listar-clientes/listar-
     CalcularTasasComponent,
     ProximosPagosComponent,
     RegistrarClientesComponent,
-    ListarClientesComponent
+    ListarClientesComponent,
+    EditarClientesComponent,
   ],
   imports: [
     CommonModule,
@@ -43,8 +48,14 @@ import { ListarClientesComponent } from './administrador/listar-clientes/listar-
     MatListModule,
     FormsModule,
     //me causaba problema sino lo importo es para el routerLink[]
-
-
+    MatFormFieldModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatNativeDateModule,
+    FormsModule,
+    
   ],
 })
 export class ComponentsModule {}
