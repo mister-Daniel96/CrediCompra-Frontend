@@ -35,11 +35,33 @@
   justify-content: space-around;
 
 }
-
+.spacer{
+  flex: 1 1 auto;
+}
+.icon-button{
+  margin-right: 1rem;
+}
+.usuario{
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+.usuario img{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: white;
+}
+.usuario h2{
+  padding: 0 10px;
+}
 /* .btnMenu:nth-child(5) {
   margin-top: 100%;
 } */
-
+.icon-button:hover ::content {
+  color: blueviolet;
+  font-weight: bold;
+}
 .btnMenu:hover ::content {
   transform: scale(1.1);
   color: blueviolet;

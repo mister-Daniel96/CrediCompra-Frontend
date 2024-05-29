@@ -38,9 +38,11 @@ import { RegistrarClientesComponent } from './administrador/registrar-clientes/r
     MatSidenavModule,
     MatIconModule,
     MatListModule, //me causaba problema sino lo importo es para el routerLink[]
-  
 
-    
+
   ],
+  exports: [
+    AdministradorComponent
+  ]
 })
 export class ComponentsModule {}

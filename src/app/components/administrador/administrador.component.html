@@ -32,12 +32,20 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" style="background-color: #1D1C28">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>CrediCompra</span>
+      <span class="spacer"></span>
+      <i class="fa-regular fa-envelope icon-button"></i>
+      <i class="fa-regular fa-bell icon-button"></i>
+      <div class="usuario">
+        <img src="" alt="" class="imgUsuario">
+        <h2>Nombre de Usuario</h2>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
