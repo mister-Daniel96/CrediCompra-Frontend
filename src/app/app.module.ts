@@ -24,7 +24,6 @@ import {ComponentsModule} from "./components/components.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     MatSnackBarModule,
     BrowserAnimationsModule,
     MatFormFieldModule,

@@ -1,50 +1,40 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar style="display: flex;justify-content: center;color: whitesmoke;">Menu</mat-toolbar>
+               [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar style="display: flex; justify-content: center; color: whitesmoke;">Menu</mat-toolbar>
 
-
-    <mat-nav-list>
-      <button class="btnMenu" [routerLink]="['/components/administrador',id,'dashboard']"(click)="toggleSidenav()">
-        Dashboard
-        <i class="fa-regular fa-user" ></i>
-      </button>
-      <button class="btnMenu" [routerLink]="['/components/administrador',id,'calcularTasas']"(click)="toggleSidenav()">
-        Calcular Tasas
-        <i class="fa-regular fa-user" ></i>
-      </button>
-      <button class="btnMenu" [routerLink]="['/components/administrador',id,'proximosPagos']"(click)="toggleSidenav()">
-        Proximos pagos
-        <i class="fa-regular fa-user" ></i>
-      </button>
-      <button class="btnMenu" [routerLink]="['/components/administrador',id,'registrarCliente']"(click)="toggleSidenav()">
-        Registrar cliente
-        <i class="fa-regular fa-user" ></i>
+    <mat-nav-list class="nav-list">
+      <button
+        *ngFor="let boton of botones"
+        class="btnMenu"
+        [routerLink]="['/components/administrador', id, boton.ruta]"
+        routerLinkActive="active"
+        [ngClass]="{'active': isLinkActive(boton.ruta)}"
+        (click)="toggleSidenav()"
+      >
+        <img [src]="boton.icon" alt="{{ boton.texto }}" class="user-icon">
+        <span class="btn-text">{{ boton.texto }}</span>
       </button>
 
-      <button class="btnMenu"  routerLink="/login" (click)="cerrar()">
-        Cerrar sesion
-        <i class="fa-regular fa-user" style="color: #ffffff;"></i>
-        </button>
-      <!-- <a mat-list-item href="components/cliente/1/mispagos">Link 1</a>
-      <a mat-list-item href="components/cliente/1/miInfo">Link 2</a>
-      <a mat-list-item href="#">Link 3</a> -->
+      <button class="btnMenu" routerLink="/login" (click)="cerrar()">
+        <img src="assets/images/cerrar.png" alt="Cerrar sesion" class="user-icon">
+        <span class="btn-text">Cerrar sesion</span>
+      </button>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" style="background-color: #1D1C28">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+    <mat-toolbar color="primary" style="background-color: #1D1C28; border-bottom: 1px solid #424141 ">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>CrediCompra</span>
       <span class="spacer"></span>
-      <i class="fa-regular fa-envelope icon-button"></i>
-      <i class="fa-regular fa-bell icon-button"></i>
-      <div class="usuario">
-        <img src="" alt="" class="imgUsuario">
+      <i class="fa-regular fa-envelope iconToolbar" style="color: #77777E;"></i>
+      <i class="fa-regular fa-bell iconToolbar" style="color: #77777E;"></i>
+      <div class="usuario-toolbar">
+        <img src="" alt="">
         <h2>Nombre de Usuario</h2>
-        <i class="fa-solid fa-chevron-down"></i>
+        <i class="fa-solid fa-chevron-down iconUsuario" style="color: #77777E;"></i>
       </div>
     </mat-toolbar>
     <!-- Add Content Here -->

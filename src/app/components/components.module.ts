@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { RouterModule } from '@angular/router';
+import {FormsModule} from "@angular/forms";
 import { AdministradorComponent } from './administrador/administrador.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,8 @@ import { DashboardComponent } from './administrador/dashboard/dashboard.componen
 import { CalcularTasasComponent } from './administrador/calcular-tasas/calcular-tasas.component';
 import { ProximosPagosComponent } from './administrador/proximos-pagos/proximos-pagos.component';
 import { RegistrarClientesComponent } from './administrador/registrar-clientes/registrar-clientes.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatTableModule} from "@angular/material/table";
 
 
 
@@ -37,12 +40,13 @@ import { RegistrarClientesComponent } from './administrador/registrar-clientes/r
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule, //me causaba problema sino lo importo es para el routerLink[]
+    FormsModule,
+    MatListModule,
+    MatCardModule,
+    MatTableModule,
+    //me causaba problema sino lo importo es para el routerLink[]
 
 
   ],
-  exports: [
-    AdministradorComponent
-  ]
 })
 export class ComponentsModule {}
