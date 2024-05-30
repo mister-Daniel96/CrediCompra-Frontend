@@ -1,0 +1,88 @@
+<div class="containerDashboard">
+  <div class="Balance">
+    <h2>Balance</h2>
+    <div class="containerCards">
+      <mat-card class="cardBalance">
+        <mat-card-header style="color: #C036B3; font-size: 24px">Clientes</mat-card-header >
+        <mat-card-content>
+          <p>600</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="cardBalance">
+        <mat-card-header style="color: #3378FF; font-size: 24px">Creditos Realizados</mat-card-header>
+        <mat-card-content>
+          <p>600</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="cardBalance">
+        <mat-card-header style="color: #299618; font-size: 24px">Creditos Pendientes</mat-card-header>
+        <mat-card-content>
+          <p>600</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="HistorialPagos">
+    <h2>Historial de Pagos</h2>
+    <mat-table [dataSource]="dataSourceHPagos" class="mat-elevation-z8"
+               style="background-color: #4F5162; border-radius: 30px; padding: 5px 20px">
+      <!-- Name Column -->
+      <ng-container matColumnDef="fecha">
+        <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Fecha </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fecha}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="cliente">
+        <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Cliente </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cliente}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="monto">
+        <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Monto </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.monto}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumnsHPagos" ></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumnsHPagos;"
+               style="color: white; font-size: 20px; border-bottom: 1px solid #999999;"></mat-row>
+    </mat-table>
+  </div>
+  <div class="ProximosPagos">
+    <h2>Proximos Pagos</h2>
+    <mat-table [dataSource]="dataSourceHPagos" class="mat-elevation-z8"
+               style="background-color: #4F5162; border-radius: 30px; padding: 5px 20px">
+      <!-- Name Column -->
+      <ng-container matColumnDef="cliente">
+        <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Cliente </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cliente}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="fecha">
+        <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Fecha </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fecha}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="monto">
+        <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Monto </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.monto}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumnsPPagos" ></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumnsPPagos;"
+               style="color: white; font-size: 20px; border-bottom: 1px solid #999999;"></mat-row>
+    </mat-table>
+  </div>
+  <div class="AccionesRapidas">
+    <h2>Acciones Rápidas</h2>
+    <div class="botonesAccionesRapidas">
+      <button class="btnAccionesRapidas">Realizar Crédito</button>
+      <button class="btnAccionesRapidas">Reporte de Saldo</button>
+      <button class="btnAccionesRapidas">Reporte de Pagos</button>
+    </div>
+
+  </div>
+</div>

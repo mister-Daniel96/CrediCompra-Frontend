@@ -1,0 +1,79 @@
+<!-- dashboard.component.html -->
+<div class="container">
+  <h2>ASIGNAR CUENTA</h2>
+  <div class="switch-container">
+    <label [ngClass]="{'active': !isEffectiveRate}">Tasa Nominal</label>
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="isEffectiveRate" (change)="toggleRateType()">
+      <span class="slider"></span>
+    </label>
+    <label [ngClass]="{'active': isEffectiveRate}">Tasa Efectiva</label>
+  </div>
+
+  <form *ngIf="!isEffectiveRate" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="capital">Capital:</label>
+      <input type="number" id="capital" name="capital" [(ngModel)]="formData.capital" min="1" oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="form-group">
+      <label for="time">Tiempo de Tasa:</label>
+      <input type="text" id="time" name="time" [(ngModel)]="formData.time" required>
+    </div>
+    <div class="form-group">
+      <label for="capitalization">Capitalización de la Tasa:</label>
+      <input type="text" id="capitalization" name="capitalization" [(ngModel)]="formData.capitalization" required>
+    </div>
+    <div class="form-group">
+      <label for="currency">Moneda:</label>
+      <select id="currency" name="currency" [(ngModel)]="formData.currency" required>
+        <option value="USD">Dólares</option>
+        <option value="PEN">Soles Peruanos</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="interestRate">Tasa de Interés (%):</label>
+      <input type="number" id="interestRate" name="interestRate" [(ngModel)]="formData.interestRate" min="1" oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="form-group">
+      <label for="loanDuration">Duración del Préstamo:</label>
+      <input type="text" id="loanDuration" name="loanDuration" [(ngModel)]="formData.loanDuration" required>
+    </div>
+    <div class="form-group">
+      <label for="clientType">Cliente:</label>
+      <input type="text" id="clientType" name="clientType" [(ngModel)]="formData.clientType" required>
+    </div>
+    <button type="submit" class="btn-submit">Adquirir</button>
+  </form>
+
+  <form *ngIf="isEffectiveRate" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="capital">Capital:</label>
+      <input type="number" id="capital" name="capital" [(ngModel)]="formData.capital" min="1" oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="form-group">
+      <label for="time">Tiempo de Tasa:</label>
+      <input type="text" id="time" name="time" [(ngModel)]="formData.time" required>
+    </div>
+    <div class="form-group">
+      <label for="currency">Moneda:</label>
+      <select id="currency" name="currency" [(ngModel)]="formData.currency" required>
+        <option value="USD">Dólares</option>
+        <option value="PEN">Soles Peruanos</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="interestRate">Tasa de Interés (%):</label>
+      <input type="number" id="interestRate" name="interestRate" [(ngModel)]="formData.interestRate" min="1" oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="form-group">
+      <label for="loanDuration">Duración del Préstamo:</label>
+      <input type="text" id="loanDuration" name="loanDuration" [(ngModel)]="formData.loanDuration" required>
+    </div>
+    <div class="form-group">
+      <label for="clientType">Cliente:</label>
+      <input type="text" id="clientType" name="clientType" [(ngModel)]="formData.clientType" required>
+    </div>
+    <button type="submit" class="btn-submit">Adquirir</button>
+  </form>
+</div>
+
