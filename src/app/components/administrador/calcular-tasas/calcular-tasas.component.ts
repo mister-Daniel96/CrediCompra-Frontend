@@ -10,8 +10,10 @@ export class CalcularTasasComponent {
 
   formData = {
     capital: '',
-    time: '',
-    capitalization: '',
+    time: 'diario',
+    customTime: null,
+    capitalization: 'diario',
+    customCapitalization: null,
     currency: 'USD',
     interestRate: '',
     loanDuration: '',
@@ -21,6 +23,15 @@ export class CalcularTasasComponent {
   toggleRateType() {
     if (this.isEffectiveRate) {
       this.formData.capitalization = '';
+    }
+  }
+
+  onSelectChange(selectType: string) {
+    if (selectType === 'time' && this.formData.time !== 'especial') {
+      this.formData.customTime = null;
+    }
+    if (selectType === 'capitalization' && this.formData.capitalization !== 'especial') {
+      this.formData.customCapitalization = null;
     }
   }
 

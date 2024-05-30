@@ -1,4 +1,3 @@
-<!-- dashboard.component.html -->
 <div class="container">
   <h2>ASIGNAR CUENTA</h2>
   <div class="switch-container">
@@ -10,18 +9,40 @@
     <label [ngClass]="{'active': isEffectiveRate}">Tasa Efectiva</label>
   </div>
 
-  <form *ngIf="!isEffectiveRate" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="capital">Capital:</label>
       <input type="number" id="capital" name="capital" [(ngModel)]="formData.capital" min="1" oninput="this.value = Math.abs(this.value)" required>
     </div>
     <div class="form-group">
       <label for="time">Tiempo de Tasa:</label>
-      <input type="text" id="time" name="time" [(ngModel)]="formData.time" required>
+      <select id="time" name="time" [(ngModel)]="formData.time" (change)="onSelectChange('time')" required>
+        <option value="diario">Diario</option>
+        <option value="quincenal">Quincenal</option>
+        <option value="mensual">Mensual</option>
+        <option value="bimestral">Bimestral</option>
+        <option value="trimestral">Trimestral</option>
+        <option value="cuatrimestral">Cuatrimestral</option>
+        <option value="semestral">Semestral</option>
+        <option value="anual">Anual</option>
+        <option value="especial">Especial</option>
+      </select>
+      <input *ngIf="formData.time === 'especial'" type="number" min="1" [(ngModel)]="formData.customTime" name="customTime" placeholder="Ingrese un valor">
     </div>
-    <div class="form-group">
+    <div *ngIf="!isEffectiveRate" class="form-group">
       <label for="capitalization">Capitalización de la Tasa:</label>
-      <input type="text" id="capitalization" name="capitalization" [(ngModel)]="formData.capitalization" required>
+      <select id="capitalization" name="capitalization" [(ngModel)]="formData.capitalization" (change)="onSelectChange('capitalization')" required>
+        <option value="diario">Diario</option>
+        <option value="quincenal">Quincenal</option>
+        <option value="mensual">Mensual</option>
+        <option value="bimestral">Bimestral</option>
+        <option value="trimestral">Trimestral</option>
+        <option value="cuatrimestral">Cuatrimestral</option>
+        <option value="semestral">Semestral</option>
+        <option value="anual">Anual</option>
+        <option value="especial">Especial</option>
+      </select>
+      <input *ngIf="formData.capitalization === 'especial'" type="number" min="1" [(ngModel)]="formData.customCapitalization" name="customCapitalization" placeholder="Ingrese un valor">
     </div>
     <div class="form-group">
       <label for="currency">Moneda:</label>
@@ -35,38 +56,7 @@
       <input type="number" id="interestRate" name="interestRate" [(ngModel)]="formData.interestRate" min="1" oninput="this.value = Math.abs(this.value)" required>
     </div>
     <div class="form-group">
-      <label for="loanDuration">Duración del Préstamo:</label>
-      <input type="text" id="loanDuration" name="loanDuration" [(ngModel)]="formData.loanDuration" required>
-    </div>
-    <div class="form-group">
-      <label for="clientType">Cliente:</label>
-      <input type="text" id="clientType" name="clientType" [(ngModel)]="formData.clientType" required>
-    </div>
-    <button type="submit" class="btn-submit">Adquirir</button>
-  </form>
-
-  <form *ngIf="isEffectiveRate" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="capital">Capital:</label>
-      <input type="number" id="capital" name="capital" [(ngModel)]="formData.capital" min="1" oninput="this.value = Math.abs(this.value)" required>
-    </div>
-    <div class="form-group">
-      <label for="time">Tiempo de Tasa:</label>
-      <input type="text" id="time" name="time" [(ngModel)]="formData.time" required>
-    </div>
-    <div class="form-group">
-      <label for="currency">Moneda:</label>
-      <select id="currency" name="currency" [(ngModel)]="formData.currency" required>
-        <option value="USD">Dólares</option>
-        <option value="PEN">Soles Peruanos</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="interestRate">Tasa de Interés (%):</label>
-      <input type="number" id="interestRate" name="interestRate" [(ngModel)]="formData.interestRate" min="1" oninput="this.value = Math.abs(this.value)" required>
-    </div>
-    <div class="form-group">
-      <label for="loanDuration">Duración del Préstamo:</label>
+      <label for="loanDuration">Duración del Préstamo (dias):</label>
       <input type="text" id="loanDuration" name="loanDuration" [(ngModel)]="formData.loanDuration" required>
     </div>
     <div class="form-group">
@@ -76,4 +66,3 @@
     <button type="submit" class="btn-submit">Adquirir</button>
   </form>
 </div>
-
