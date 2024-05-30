@@ -13,13 +13,16 @@ import { MatIconModule } from '@angular/material/icon';
 import {  HttpClientModule } from '@angular/common/http';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from "@angular/material/button";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatButtonModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -27,7 +30,11 @@ import {MatButtonModule} from "@angular/material/button";
     ReactiveFormsModule,
     MatIconModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
