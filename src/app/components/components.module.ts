@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTableModule,
     MatNativeDateModule,
     FormsModule,
+    MatInputModule
     
   ],
 })

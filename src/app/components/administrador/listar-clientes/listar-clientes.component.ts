@@ -22,7 +22,7 @@ export class ListarClientesComponent implements OnInit{
     'edad',
     'dni',
     'creditoMaximo',
-    'accion01'
+   /*  'accion01' */
   ];
   
   id:number=1;

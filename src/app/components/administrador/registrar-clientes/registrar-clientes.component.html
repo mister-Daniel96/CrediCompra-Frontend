@@ -1,9 +1,41 @@
-<h1 mat-dialog-title>Bienvenido</h1>
+<h1 mat-dialog-title>Cliente nuevo</h1>
 
-<div mat-dialog-content>
-este es el contenido del dialogo
+<div>
+    <form class="example-form table-form" [formGroup]="form" (submit)="aceptar()">
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="nameUsuario" matInput placeholder="Nombre">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>E-mail</mat-label>
+            <input formControlName="emailUsuario" matInput placeholder="E-mail">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Direccion</mat-label>
+            <input formControlName="streetUsuario" matInput placeholder="Direccion">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Edad</mat-label>
+            <input formControlName="ageUsuario" matInput placeholder="Edad">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>DNI</mat-label>
+            <input formControlName="dniUsuario" matInput placeholder="DNI">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Credito Maximo</mat-label>
+            <input formControlName="creditUsuario" matInput placeholder="Credito">
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary">
+            Guardar
+        </button>
+    </form>
+  
 </div>
 
-<div mat-dialog-actions>
+<!-- <div mat-dialog-actions>
     <button (click)="closeDialog()">Close</button>
-</div>
+</div> -->

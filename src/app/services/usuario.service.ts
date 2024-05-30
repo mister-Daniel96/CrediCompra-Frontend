@@ -25,7 +25,7 @@ export class UsuarioService {
 
   insert(usuario:Usuario){
     let token=sessionStorage.getItem('token');
-    return this.http.post(this.url,usuario,{
+    return this.http.post(`${this.url}/registerUser`,usuario,{
       headers: new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
