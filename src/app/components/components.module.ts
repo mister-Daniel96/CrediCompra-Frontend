@@ -25,6 +25,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AdministradorComponent,
@@ -57,7 +59,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatNativeDateModule,
     FormsModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
     
   ],
 })
