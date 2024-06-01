@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
@@ -23,19 +23,15 @@ export class RegistrarEditarClientesComponent {
 
   nuevoCliente: Usuario = new Usuario();
   edicion: boolean = false;
-  /*  id: number = 0; */
+  id: number = 0;
   constructor(
     private ref: MatDialogRef<RegistrarEditarClientesComponent>,
     private formBuilder: FormBuilder,
     private uS: UsuarioService,
     private snackbar: MatSnackBar,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
-
-  /* closeDialog(){
-    this.dialog.closeAll();
-  }
-    */
 
   ngOnInit(): void {
     /* this.route.params.subscribe((data: Params) => {
@@ -43,11 +39,15 @@ export class RegistrarEditarClientesComponent {
       this.edicion = data['id'] !== null;
       this.init();
     }); */
+    if(this.data!=null&&this.data.id!=null&&this.data.id!=''){
+      this.edicion=true;
+      this.id=this.data.id;
+      this.init();
+    }
 
     this.form = this.formBuilder.group({
       idUsuario: [],
       nameUsuario: ['', Validators.required],
-      passwordUsuario: [''],
       emailUsuario: ['', Validators.required],
       enabledUsuario: [],
       streetUsuario: ['', Validators.required],
@@ -62,20 +62,17 @@ export class RegistrarEditarClientesComponent {
 
   aceptar() {
     if (this.form.valid) {
+      
       this.nuevoCliente.nameUsuario = this.form.value.nameUsuario.trim();
       this.nuevoCliente.passwordUsuario = bcrypt.hashSync(
-        this.form.value.dniUsuario.trim(),
+        this.form.value.dniUsuario,
         12
       );
       this.nuevoCliente.emailUsuario = this.form.value.emailUsuario.trim();
       this.nuevoCliente.enabledUsuario = true;
       this.nuevoCliente.streetUsuario = this.form.value.streetUsuario.trim();
-      this.nuevoCliente.ageUsuario = parseInt(
-        this.form.value.ageUsuario.trim()
-      );
-      this.nuevoCliente.dniUsuario = parseInt(
-        this.form.value.dniUsuario.trim()
-      );
+      this.nuevoCliente.ageUsuario = parseInt(this.form.value.ageUsuario);
+      this.nuevoCliente.dniUsuario = parseInt(this.form.value.dniUsuario);
       this.nuevoCliente.creditUsuario = parseInt(this.form.value.creditUsuario);
 
       console.log(this.nuevoCliente);
@@ -104,24 +101,25 @@ export class RegistrarEditarClientesComponent {
       });
     }
   }
+
   closeDialog() {
     this.ref.close();
   }
-  
+
   registrar() {}
-  /* init() {
+  init() {
     if (this.edicion) {
       this.uS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idUsuario: new FormControl(data.idUsuario),
-          nameUsuario: new FormControl(data.nameUsuario),
-          emailUsuario: new FormControl(data.emailUsuario),
-          streetUsuario: new FormControl(data.streetUsuario),
-          ageUsuario: new FormControl(data.ageUsuario),
-          dniUsuario: new FormControl(data.dniUsuario),
-          creditUsuario: new FormControl(data.creditUsuario),
+        this.form.patchValue({
+          idUsuario: data.idUsuario,
+          nameUsuario: data.nameUsuario,
+          emailUsuario: data.emailUsuario,
+          streetUsuario: data.streetUsuario,
+          ageUsuario: data.ageUsuario,
+          dniUsuario: data.dniUsuario,
+          creditUsuario: data.creditUsuario,
         });
       });
     }
-  } */
+  }
 }

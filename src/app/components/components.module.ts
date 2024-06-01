@@ -57,7 +57,8 @@ import { RegistrarEditarClientesComponent } from './administrador/registrar-edit
     FormsModule,
     MatInputModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
 
   ],
 })

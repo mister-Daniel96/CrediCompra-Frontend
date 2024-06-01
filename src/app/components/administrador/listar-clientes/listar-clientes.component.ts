@@ -11,7 +11,7 @@ import { RegistrarEditarClientesComponent } from '../registrar-editar-clientes/r
   templateUrl: './listar-clientes.component.html',
   styleUrls: ['./listar-clientes.component.css'],
 })
-export class ListarClientesComponent implements OnInit{
+export class ListarClientesComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
   displayedColumns: string[] = [
     'codigo',
@@ -22,23 +22,20 @@ export class ListarClientesComponent implements OnInit{
     'edad',
     'dni',
     'creditoMaximo',
-     'accion01' 
+    'accion01',
   ];
-  
-  id:number=1;
+
+  id: number = 1;
   constructor(private uS: UsuarioService, private dialog: MatDialog) {}
 
-
   ngOnInit(): void {
-
     this.uS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
-      console.log(this.dataSource)
+      console.log(this.dataSource);
     });
     this.uS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
     });
-   
   }
   openDialog() {
     this.dialog.open(RegistrarEditarClientesComponent, {
@@ -49,5 +46,26 @@ export class ListarClientesComponent implements OnInit{
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  removeClient(id: number) {
+    this.uS.delete(id).subscribe((data) => {
+      this.uS.list().subscribe((data) => {
+        this.uS.setList(data);
+      });
+    });
+  }
+  openDialog2(id: number) {
+    this.dialog.open(RegistrarEditarClientesComponent, {
+      enterAnimationDuration: '1000',
+      exitAnimationDuration: '1100',
+      width: '50%',
+      height: '500px',
+      data: {
+        id: id
+      },
+    });
+  }
+  editClient(id: number) {
+    this.openDialog2(id);
   }
 }

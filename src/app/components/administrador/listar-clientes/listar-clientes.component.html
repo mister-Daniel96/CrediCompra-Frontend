@@ -86,11 +86,11 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
-                            <button mat-menu-item>
+                            <button mat-menu-item (click)="editClient(element.idUsuario)">
                                 <mat-icon class="fa-solid fa-pen-to-square"></mat-icon>
                                 <span>Editar</span>
                             </button>
-                            <button mat-menu-item>
+                            <button mat-menu-item (click)="removeClient(element.idUsuario)">
                                 <mat-icon class="fa-solid fa-trash"></mat-icon>
                                 <span>Eliminar</span>
                             </button>
