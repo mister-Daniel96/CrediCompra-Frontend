@@ -14,10 +14,8 @@ import { MiInfoComponent } from './cliente/mi-info/mi-info.component';
 import { DashboardComponent } from './administrador/dashboard/dashboard.component';
 import { CalcularTasasComponent } from './administrador/calcular-tasas/calcular-tasas.component';
 import { ProximosPagosComponent } from './administrador/proximos-pagos/proximos-pagos.component';
-import { RegistrarClientesComponent } from './administrador/registrar-clientes/registrar-clientes.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListarClientesComponent } from './administrador/listar-clientes/listar-clientes.component';
-import { EditarClientesComponent } from './administrador/editar-clientes/editar-clientes.component';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
@@ -26,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { RegistrarEditarClientesComponent } from './administrador/registrar-editar-clientes/registrar-editar-clientes.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +35,8 @@ import { MatCardModule } from '@angular/material/card';
     DashboardComponent,
     CalcularTasasComponent,
     ProximosPagosComponent,
-    RegistrarClientesComponent,
     ListarClientesComponent,
-    EditarClientesComponent,
-  ],
+    RegistrarEditarClientesComponent,  ],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
@@ -61,7 +58,7 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatMenuModule,
     MatCardModule
-    
+
   ],
 })
 export class ComponentsModule {}

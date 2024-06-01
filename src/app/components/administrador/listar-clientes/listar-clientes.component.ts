@@ -1,10 +1,10 @@
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RegistrarClientesComponent } from '../registrar-clientes/registrar-clientes.component';
 import { Usuario } from 'src/app/models/usuario';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { RegistrarEditarClientesComponent } from '../registrar-editar-clientes/registrar-editar-clientes.component';
 
 @Component({
   selector: 'app-listar-clientes',
@@ -41,9 +41,13 @@ export class ListarClientesComponent implements OnInit{
    
   }
   openDialog() {
-    this.dialog.open(RegistrarClientesComponent, {
+    this.dialog.open(RegistrarEditarClientesComponent, {
       width: '50%',
       height: '400px',
     });
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

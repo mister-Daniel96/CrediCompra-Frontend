@@ -1,27 +1,23 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import * as bcrypt from 'bcryptjs';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import * as bcrypt from 'bcryptjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-registrar-clientes',
-  templateUrl: './registrar-clientes.component.html',
-  styleUrls: ['./registrar-clientes.component.css'],
+  selector: 'app-registrar-editar-clientes',
+  templateUrl: './registrar-editar-clientes.component.html',
+  styleUrls: ['./registrar-editar-clientes.component.css']
 })
-export class RegistrarClientesComponent implements OnInit {
+export class RegistrarEditarClientesComponent {
   form: FormGroup = new FormGroup({});
   mensaje: string = '';
 
   nuevoCliente: Usuario = new Usuario();
   constructor(
-    private ref: MatDialogRef<RegistrarClientesComponent>,
+    private ref: MatDialogRef<RegistrarEditarClientesComponent>,
     private formBuilder: FormBuilder,
     private uS: UsuarioService,
     private snackbar: MatSnackBar

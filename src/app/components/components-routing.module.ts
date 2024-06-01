@@ -8,8 +8,8 @@ import { MiInfoComponent } from './cliente/mi-info/mi-info.component';
 import { DashboardComponent } from './administrador/dashboard/dashboard.component';
 import { CalcularTasasComponent } from './administrador/calcular-tasas/calcular-tasas.component';
 import { ProximosPagosComponent } from './administrador/proximos-pagos/proximos-pagos.component';
-import { RegistrarClientesComponent } from './administrador/registrar-clientes/registrar-clientes.component';
 import { ListarClientesComponent } from './administrador/listar-clientes/listar-clientes.component';
+import { RegistrarEditarClientesComponent } from './administrador/registrar-editar-clientes/registrar-editar-clientes.component';
 
 const routes: Routes = [
   {
@@ -47,7 +47,7 @@ const routes: Routes = [
         component: ListarClientesComponent,
       },{
         path:'registrarClientes',
-        component:RegistrarClientesComponent
+        component:RegistrarEditarClientesComponent
       }
     ],
   },
