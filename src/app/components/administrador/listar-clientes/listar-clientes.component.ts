@@ -49,6 +49,7 @@ export class ListarClientesComponent implements OnInit {
   }
   removeClient(id: number) {
     this.uS.delete(id).subscribe((data) => {
+      console.log('error');
       this.uS.list().subscribe((data) => {
         this.uS.setList(data);
       });
@@ -61,7 +62,7 @@ export class ListarClientesComponent implements OnInit {
       width: '50%',
       height: '500px',
       data: {
-        id: id
+        id: id,
       },
     });
   }
