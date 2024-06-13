@@ -23,13 +23,20 @@
             <mat-label>DNI</mat-label>
             <input formControlName="dniUsuario" matInput placeholder="DNI">
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+         <mat-form-field floatLabel="always" class="example-full-width">
+            <mat-label>Credito Max</mat-label>
+            <input formControlName="creditUsuario" 
+             matInput type="number" class="example-right-align" placeholder="0" />
+            <span matTextPrefix>$&nbsp;</span>
+            <span matTextSuffix>.00</span>
+          </mat-form-field>
+        <!-- <mat-form-field class="example-full-width">
             <mat-label>Credito Maximo</mat-label>
             <input formControlName="creditUsuario" matInput placeholder="Credito">
-        </mat-form-field>
+        </mat-form-field>  -->
 
 
-        <button mat-raised-button color="primary">
+        <button mat-raised-button color="primary" type="submit">
             Guardar
         </button>
     </form>

@@ -12,9 +12,12 @@ import { RegistrarEditarClientesComponent } from '../registrar-editar-clientes/r
   styleUrls: ['./listar-clientes.component.css'],
 })
 export class ListarClientesComponent implements OnInit {
+
+  isLoadingResults = true; // o falso según la lógica de tu aplicación
+  isRateLimitReached = false; 
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
   displayedColumns: string[] = [
-    'codigo',
+    /* 'codigo', */
     'nombre',
     'email',
     'estado',
@@ -22,9 +25,10 @@ export class ListarClientesComponent implements OnInit {
     'edad',
     'dni',
     'creditoMaximo',
+    'saldoActual',
     'accion01',
   ];
-
+ 
   id: number = 1;
   constructor(private uS: UsuarioService, private dialog: MatDialog) {}
 

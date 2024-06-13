@@ -31,3 +31,10 @@ form button {
     width: 50%;
     margin: 0 auto;
 }
+/* CSS para ocultar las flechas de incremento/decremento */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+

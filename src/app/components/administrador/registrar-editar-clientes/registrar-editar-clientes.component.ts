@@ -39,9 +39,9 @@ export class RegistrarEditarClientesComponent {
       this.edicion = data['id'] !== null;
       this.init();
     }); */
-    if(this.data!=null&&this.data.id!=null&&this.data.id!=''){
-      this.edicion=true;
-      this.id=this.data.id;
+    if (this.data != null && this.data.id != null && this.data.id != '') {
+      this.edicion = true;
+      this.id = this.data.id;
       this.init();
     }
 
@@ -56,27 +56,33 @@ export class RegistrarEditarClientesComponent {
         [Validators.required, Validators.min(18), Validators.max(70)],
       ],
       dniUsuario: ['', [Validators.required, Validators.pattern('^[0-9]{8}$')]],
-      creditUsuario: ['', Validators.required],
+      creditUsuario: ['', [Validators.required]],
     });
   }
 
   aceptar() {
     if (this.form.valid) {
-      
       this.nuevoCliente.nameUsuario = this.form.value.nameUsuario.trim();
-      this.nuevoCliente.passwordUsuario = bcrypt.hashSync(
-        this.form.value.dniUsuario,
-        12
-      );
+      const password: string = String(this.form.value.dniUsuario);
+      const saltRounds: number = 12; // Número de rondas de sal
+
+      // Hasheamos la contraseña
+      this.nuevoCliente.passwordUsuario = bcrypt.hashSync(password, saltRounds);
+
       this.nuevoCliente.emailUsuario = this.form.value.emailUsuario.trim();
       this.nuevoCliente.enabledUsuario = true;
       this.nuevoCliente.streetUsuario = this.form.value.streetUsuario.trim();
       this.nuevoCliente.ageUsuario = parseInt(this.form.value.ageUsuario);
       this.nuevoCliente.dniUsuario = parseInt(this.form.value.dniUsuario);
-      this.nuevoCliente.creditUsuario = parseInt(this.form.value.creditUsuario);
+      this.nuevoCliente.creditUsuario = parseFloat(
+        this.form.value.creditUsuario
+      );
+      this.nuevoCliente.creditUsuarioAvailable = parseFloat(
+        this.form.value.creditUsuario
+      );
 
-      console.log(this.nuevoCliente);
       if (this.edicion) {
+        this.nuevoCliente.idUsuario = this.id;
         this.uS.update(this.nuevoCliente).subscribe((data) => {
           this.uS.list().subscribe((data) => {
             this.uS.setList(data);

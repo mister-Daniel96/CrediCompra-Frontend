@@ -8,4 +8,5 @@ export class Usuario {
   ageUsuario:number=0;
   dniUsuario:number=0;
   creditUsuario:number=0;
+  creditUsuarioAvailable:number=0;
 }

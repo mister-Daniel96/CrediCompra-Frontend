@@ -20,11 +20,13 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { RegistrarEditarClientesComponent } from './administrador/registrar-editar-clientes/registrar-editar-clientes.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { RegistrarEditarClientesComponent } from './administrador/registrar-edit
     CalcularTasasComponent,
     ProximosPagosComponent,
     ListarClientesComponent,
-    RegistrarEditarClientesComponent,  ],
+    RegistrarEditarClientesComponent,
+      ],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
@@ -58,7 +61,10 @@ import { RegistrarEditarClientesComponent } from './administrador/registrar-edit
     MatInputModule,
     MatMenuModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    MatOptionModule,
+    MatSelectModule
 
   ],
 })
