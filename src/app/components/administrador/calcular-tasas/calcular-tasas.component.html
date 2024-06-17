@@ -1,1 +1,130 @@
-<p>calcular-tasas works!</p>
+<!-- 
+<div class="container">
+  <h2>ASIGNAR CUENTA</h2>
+  <div class="switch-container">
+    <label [ngClass]="{'active': !isEffectiveRate}">Tasa Nominal</label>
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="isEffectiveRate" (change)="toggleRateType()">
+      <span class="slider"></span>
+    </label>
+    <label [ngClass]="{'active': isEffectiveRate}">Tasa Efectiva</label>
+  </div>
+
+  <form *ngIf="!isEffectiveRate" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="capital">Capital:</label>
+      <input type="number" id="capital" name="capital" [(ngModel)]="formData.capital" min="1"
+        oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="form-group">
+      <label for="time">Tiempo de Tasa:</label>
+      <input type="text" id="time" name="time" [(ngModel)]="formData.time" required>
+    </div>
+    <div class="form-group">
+      <label for="capitalization">Capitalización de la Tasa:</label>
+      <input type="text" id="capitalization" name="capitalization" [(ngModel)]="formData.capitalization" required>
+    </div>
+    <div class="form-group">
+      <label for="currency">Moneda:</label>
+      <select id="currency" name="currency" [(ngModel)]="formData.currency" required>
+        <option value="USD">Dólares</option>
+        <option value="PEN">Soles Peruanos</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="interestRate">Tasa de Interés (%):</label>
+      <input type="number" id="interestRate" name="interestRate" [(ngModel)]="formData.interestRate" min="1"
+        oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="form-group">
+      <label for="loanDuration">Duración del Préstamo:</label>
+      <input type="text" id="loanDuration" name="loanDuration" [(ngModel)]="formData.loanDuration" required>
+    </div>
+    <div class="form-group">
+      <label for="clientType">Cliente:</label>
+      <input type="text" id="clientType" name="clientType" [(ngModel)]="formData.clientType" required>
+    </div>
+    <button type="submit" class="btn-submit">Adquirir</button>
+  </form>
+
+  <form *ngIf="isEffectiveRate" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="capital">Capital:</label>
+      <input type="number" id="capital" name="capital" [(ngModel)]="formData.capital" min="1"
+        oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="form-group">
+      <label for="time">Tiempo de Tasa:</label>
+      <input type="text" id="time" name="time" [(ngModel)]="formData.time" required>
+    </div>
+    <div class="form-group">
+      <label for="currency">Moneda:</label>
+      <select id="currency" name="currency" [(ngModel)]="formData.currency" required>
+        <option value="USD">Dólares</option>
+        <option value="PEN">Soles Peruanos</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="interestRate">Tasa de Interés (%):</label>
+      <input type="number" id="interestRate" name="interestRate" [(ngModel)]="formData.interestRate" min="1"
+        oninput="this.value = Math.abs(this.value)" required>
+    </div>
+    <div class="form-group">
+      <label for="loanDuration">Duración del Préstamo:</label>
+      <input type="text" id="loanDuration" name="loanDuration" [(ngModel)]="formData.loanDuration" required>
+    </div>
+    <div class="form-group">
+      <label for="clientType">Cliente:</label>
+      <input type="text" id="clientType" name="clientType" [(ngModel)]="formData.clientType" required>
+    </div>
+    <button type="submit" class="btn-submit">Adquirir</button>
+  </form>
+</div> -->
+<form class="example-form table-form" [formGroup]="form" (submit)="aceptar()">
+
+  <mat-form-field>
+    <mat-label>Cliente</mat-label>
+    <mat-select formControlName="nameUsuario">
+      <mat-option *ngFor="let g of listaUsuarios" [value]="g.idUsuario">
+        {{g.nameUsuario}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Interes - TEM</mat-label>
+    <input formControlName="interestRate"matInput type="number" class="example-right-align" matInput placeholder="%">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nro. de meses</mat-label>
+    <mat-select formControlName="duration">
+      <mat-option *ngFor="let g of NroMonth" [value]="g.value">
+        {{g.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field floatLabel="always" class="example-full-width">
+    <mat-label>Monto</mat-label>
+    <input formControlName="currentValue" matInput type="number" class="example-right-align" placeholder="0" />
+    <span matTextPrefix>$&nbsp;</span>
+    <span matTextSuffix>.00</span>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Anualidad</mat-label>
+    <mat-select formControlName="annuities">
+      <mat-option *ngFor="let g of typesAnnuities" [value]="g.value">
+        {{g.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!--  -->
+  <!-- <mat-form-field class="example-full-width">
+      <mat-label>Credito Maximo</mat-label>
+      <input formControlName="creditUsuario" matInput placeholder="Credito">
+  </mat-form-field>  -->
+
+
+  <button mat-raised-button color="primary" type="submit">
+    Guardar
+  </button>
+</form>

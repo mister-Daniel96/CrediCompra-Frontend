@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtRequest } from 'src/app/models/jwtRequest';
@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nameUsuario: [],
-      passwordUsuario: [],
+      nameUsuario: ['', Validators.required],
+      passwordUsuario: ['',Validators.required],
     });
   }
   login() {
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           if (this.loginService.showRole() == 'CLIENTE') {
             this.router.navigate([`components/cliente/${this.id}`]);
           } else if (this.loginService.showRole() == 'ADMINISTRADOR') {
-            this.router.navigate([`components/administrator/${this.id}`]);
+            this.router.navigate([`components/administrador/${this.id}`]);
           }
         });
       },
