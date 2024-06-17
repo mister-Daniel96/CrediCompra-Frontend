@@ -80,7 +80,6 @@
     <button type="submit" class="btn-submit">Adquirir</button>
   </form>
 </div> -->
-
 <form class="example-form table-form" [formGroup]="form" (submit)="aceptar()">
 
   <mat-form-field>
@@ -93,7 +92,7 @@
   </mat-form-field>
   <mat-form-field class="example-full-width">
     <mat-label>Interes - TEM</mat-label>
-    <input formControlName="interestRate" matInput placeholder="DNI">
+    <input formControlName="interestRate"matInput type="number" class="example-right-align" matInput placeholder="%">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Nro. de meses</mat-label>
