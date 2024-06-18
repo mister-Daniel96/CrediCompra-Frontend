@@ -1,66 +1,46 @@
-<<<<<<< HEAD
-<h1 mat-dialog-title>Cliente nuevo</h1>
-
-<div>
-=======
 <div class="registrar">
-    <h1>Cliente nuevo</h1>
+  <h1>Cliente nuevo</h1>
 
->>>>>>> eab808a79be5c091166fc68717c3396061220f8c
-    <form class="example-form table-form" [formGroup]="form" (submit)="aceptar()">
+  <form class="example-form table-form" [formGroup]="form" (submit)="aceptar()">
 
-        <mat-form-field class="example-full-width">
-            <mat-label>Nombre</mat-label>
-            <input formControlName="nameUsuario" matInput placeholder="Nombre">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>E-mail</mat-label>
-            <input formControlName="emailUsuario" matInput placeholder="E-mail">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Direccion</mat-label>
-            <input formControlName="streetUsuario" matInput placeholder="Direccion">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Edad</mat-label>
-            <input formControlName="ageUsuario" matInput placeholder="Edad">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>DNI</mat-label>
-            <input formControlName="dniUsuario" matInput placeholder="DNI">
-        </mat-form-field>
-<<<<<<< HEAD
-        <mat-form-field class="example-full-width">
-            <mat-label>Credito Maximo</mat-label>
-            <input formControlName="creditUsuario" matInput placeholder="Credito">
-        </mat-form-field>
-
-
-        <button mat-raised-button color="primary">
-            Guardar
-        </button>
-    </form>
-  
-=======
-         <mat-form-field floatLabel="always" class="example-full-width">
-            <mat-label>Credito Max</mat-label>
-            <input formControlName="creditUsuario" 
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="nameUsuario" matInput placeholder="Nombre">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>E-mail</mat-label>
+      <input formControlName="emailUsuario" matInput placeholder="E-mail">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Direccion</mat-label>
+      <input formControlName="streetUsuario" matInput placeholder="Direccion">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Edad</mat-label>
+      <input formControlName="ageUsuario" matInput placeholder="Edad">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>DNI</mat-label>
+      <input formControlName="dniUsuario" matInput placeholder="DNI">
+    </mat-form-field>
+    <mat-form-field floatLabel="always" class="example-full-width">
+      <mat-label>Credito Max</mat-label>
+      <input formControlName="creditUsuario"
              matInput type="number" class="example-right-align" placeholder="0" />
-            <span matTextPrefix>$&nbsp;</span>
-            <span matTextSuffix>.00</span>
-          </mat-form-field>
-        <!-- <mat-form-field class="example-full-width">
-            <mat-label>Credito Maximo</mat-label>
-            <input formControlName="creditUsuario" matInput placeholder="Credito">
-        </mat-form-field>  -->
+      <span matTextPrefix>$&nbsp;</span>
+      <span matTextSuffix>.00</span>
+    </mat-form-field>
+    <!-- <mat-form-field class="example-full-width">
+        <mat-label>Credito Maximo</mat-label>
+        <input formControlName="creditUsuario" matInput placeholder="Credito">
+    </mat-form-field>  -->
 
 
-        <button mat-raised-button color="primary" type="submit">
-            Guardar
-        </button>
-    </form>
+    <button mat-raised-button color="primary" type="submit">
+      Guardar
+    </button>
+  </form>
 
->>>>>>> eab808a79be5c091166fc68717c3396061220f8c
 </div>
 
 <!-- <div mat-dialog-actions>

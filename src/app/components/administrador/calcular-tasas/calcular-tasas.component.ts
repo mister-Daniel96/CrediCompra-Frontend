@@ -1,6 +1,6 @@
-import { credito } from './../../../models/credito';
-import { Usuario } from './../../../models/usuario';
-import { Component, OnInit } from '@angular/core';
+import { credito } from '../../../models/credito';
+import { Usuario } from '../../../models/usuario';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -89,7 +89,7 @@ export class CalcularTasasComponent implements OnInit {
       this.cred.annuities = this.form.value.annuities;
       this.cred.enableCredito = true;
       this.cred.annuities = this.form.value.annuities;
-    
+
       console.log(this.cred)
       this.cS.insert(this.cred).subscribe(data => {
         this.cS.list().subscribe(data => {
