@@ -14,7 +14,9 @@ table {
     gap: 60px;
 
 }
-
+.imprimir{
+    font-size: 30px;
+}
 .btnAgregar {
     width: 150px;
     margin-left: auto;

@@ -10,6 +10,7 @@
 
 <body>
     <div class="main">
+        <button (click)="exportarExcel()" class="imprimir"  >Exportar <i class="fa-solid fa-download"></i></button>
         <button class="btnAgregar" (click)="openDialog()">
             <i class="fa-solid fa-user-plus"></i>
             <i>Agregar cliente</i>
@@ -21,7 +22,7 @@
 
         <div class="mat-elevation-z8" style="width: 80%;overflow-x: scroll; margin:0 auto;" class="tableDiv">
 
-            <table mat-table [dataSource]="dataSource">
+            <table mat-table [dataSource]="dataSource" id="table-data">
 
 
 

@@ -5,16 +5,15 @@ import { Usuario } from 'src/app/models/usuario';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { RegistrarEditarClientesComponent } from '../registrar-editar-clientes/registrar-editar-clientes.component';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-listar-clientes',
   templateUrl: './listar-clientes.component.html',
   styleUrls: ['./listar-clientes.component.css'],
 })
 export class ListarClientesComponent implements OnInit {
-
   isLoadingResults = true; // o falso según la lógica de tu aplicación
-  isRateLimitReached = false; 
+  isRateLimitReached = false;
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
   displayedColumns: string[] = [
     /* 'codigo', */
@@ -28,7 +27,7 @@ export class ListarClientesComponent implements OnInit {
     'saldoActual',
     'accion01',
   ];
- 
+
   id: number = 1;
   constructor(private uS: UsuarioService, private dialog: MatDialog) {}
 
@@ -72,5 +71,15 @@ export class ListarClientesComponent implements OnInit {
   }
   editClient(id: number) {
     this.openDialog2(id);
+  }
+  fileName = 'ExcelSheet.xlsx';
+  exportarExcel() {
+    let data = document.getElementById('table-data');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(data);
+
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    XLSX.writeFile(wb, this.fileName);
   }
 }
