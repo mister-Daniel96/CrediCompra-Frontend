@@ -1,4 +1,3 @@
-<p>dashboard works!</p>
 <div class="containerDashboard">
     <div class="Balance">
       <h2>Balance</h2>
@@ -32,19 +31,19 @@
           <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Fecha </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.fecha}} </mat-cell>
         </ng-container>
-  
+
         <!-- Weight Column -->
         <ng-container matColumnDef="cliente">
           <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Cliente </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.cliente}} </mat-cell>
         </ng-container>
-  
+
         <!-- Symbol Column -->
         <ng-container matColumnDef="monto">
           <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Monto </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.monto}} </mat-cell>
         </ng-container>
-  
+
         <mat-header-row *matHeaderRowDef="displayedColumnsHPagos" ></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumnsHPagos;"
                  style="color: white; font-size: 20px; border-bottom: 1px solid #999999;"></mat-row>
@@ -59,19 +58,19 @@
           <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Cliente </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.cliente}} </mat-cell>
         </ng-container>
-  
+
         <!-- Weight Column -->
         <ng-container matColumnDef="fecha">
           <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Fecha </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.fecha}} </mat-cell>
         </ng-container>
-  
+
         <!-- Symbol Column -->
         <ng-container matColumnDef="monto">
           <mat-header-cell *matHeaderCellDef style="color: #999999; font-size: 18px"> Monto </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.monto}} </mat-cell>
         </ng-container>
-  
+
         <mat-header-row *matHeaderRowDef="displayedColumnsPPagos" ></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumnsPPagos;"
                  style="color: white; font-size: 20px; border-bottom: 1px solid #999999;"></mat-row>
@@ -84,6 +83,6 @@
         <button class="btnAccionesRapidas">Reporte de Saldo</button>
         <button class="btnAccionesRapidas">Reporte de Pagos</button>
       </div>
-  
+
     </div>
   </div>
