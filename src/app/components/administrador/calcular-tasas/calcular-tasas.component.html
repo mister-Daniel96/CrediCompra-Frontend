@@ -92,7 +92,7 @@
   </mat-form-field>
   <mat-form-field class="example-full-width">
     <mat-label>Interes - TEM</mat-label>
-    <input formControlName="interestRate"matInput type="number" class="example-right-align" matInput placeholder="%">
+    <input formControlName="interestRate" matInput type="number" class="example-right-align" matInput placeholder="%">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Nro. de meses</mat-label>
@@ -111,13 +111,22 @@
 
   <mat-form-field>
     <mat-label>Anualidad</mat-label>
-    <mat-select formControlName="annuities">
+    <mat-select formControlName="annuities" >
       <mat-option *ngFor="let g of typesAnnuities" [value]="g.value">
         {{g.viewValue}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <!--  -->
+ 
+
+  <mat-form-field appearance="fill" class="example-full-width">
+    <input matInput placeholder="Fecha a pagar" [matDatepicker]="picker" formControlName="dateExpiration"
+      [min]="maxFecha" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
   <!-- <mat-form-field class="example-full-width">
       <mat-label>Credito Maximo</mat-label>
       <input formControlName="creditUsuario" matInput placeholder="Credito">

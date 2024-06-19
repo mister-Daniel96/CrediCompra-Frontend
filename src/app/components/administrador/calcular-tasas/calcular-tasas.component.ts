@@ -16,11 +16,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class CalcularTasasComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
-  cred: credito = new credito()
+  cred: credito = new credito();
   mensaje: string = '';
   listaUsuarios: Usuario[] = [];
-
-  //Fecha: string = moment().format('YYYY-MM-DD');
+  maxFecha: Date = moment().add(+1, 'days').toDate();
 
   typesAnnuities: { value: Boolean; viewValue: string }[] = [
     { value: true, viewValue: 'Con Anualidad' },
@@ -34,41 +33,20 @@ export class CalcularTasasComponent implements OnInit {
     { value: 5, viewValue: '5' },
     { value: 6, viewValue: '6' },
   ];
-
+  checked = false;
   constructor(
     private formBuilder: FormBuilder,
     private uS: UsuarioService,
-    private cS:CreditoService,
+    private cS: CreditoService,
     private snackbar: MatSnackBar,
     private route: ActivatedRoute,
     private router: Router
   ) {}
-  /* isEffectiveRate: boolean = false;
-
-  formData = {
-    capital: '',
-    time: '',
-    capitalization: '',
-    currency: 'USD',
-    interestRate: '',
-    loanDuration: '',
-    clientType: ''
-  };
-
-  toggleRateType() {
-    if (this.isEffectiveRate) {
-      this.formData.capitalization = '';
-    }
-  }
-
-  onSubmit() {
-    // Lógica para manejar el envío del formulario
-    console.log('Datos del formulario:', this.formData);
-  } */
+  
   ngOnInit(): void {
     console.log(this.listaUsuarios);
     this.form = this.formBuilder.group({
-      nameUsuario: ['',Validators.required],
+      nameUsuario: ['', Validators.required],
       interestRate: [Validators.required],
       duration: [Validators.required],
       currentValue: [Validators.required],
@@ -83,22 +61,27 @@ export class CalcularTasasComponent implements OnInit {
       this.cred.usuario.idUsuario = this.form.value.nameUsuario;
       this.cred.interestRate = this.form.value.interestRate;
       this.cred.duration = this.form.value.duration;
-      this.cred.dateRecorder=new Date(Date.now());//no importa porque sera mandado por el backend
+      this.cred.dateRecorder = new Date(Date.now()); //no importa porque sera mandado por el backend
+      this.cred.dateExpiration = this.form.value.dateExpiration;
       this.cred.currentValue = this.form.value.currentValue;
       this.cred.remainingAmount = this.form.value.currentValue;
       this.cred.annuities = this.form.value.annuities;
       this.cred.enableCredito = true;
       this.cred.annuities = this.form.value.annuities;
-    
-      console.log(this.cred)
-      this.cS.insert(this.cred).subscribe(data => {
-        this.cS.list().subscribe(data => {
-          this.cS.setList(data)
-        })
-      })
-      this.router.navigate(['components/administrador/:id'])
+
+      console.log(this.cred);
+      this.cS.insert(this.cred).subscribe((data) => {
+        this.cS.list().subscribe((data) => {
+          this.cS.setList(data);
+        });
+      });
+      this.router.navigate(['components/administrador/:id']);
     } else {
-      this.mensaje = 'Ingrese todos los campos!!'
+      this.mensaje = 'Ingrese todos los campos!!';
     }
+  }
+
+  toggle(){
+    
   }
 }

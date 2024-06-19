@@ -27,6 +27,11 @@ import { MatCardModule } from '@angular/material/card';
 import { RegistrarEditarClientesComponent } from './administrador/registrar-editar-clientes/registrar-editar-clientes.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -64,7 +69,11 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatGridListModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatRadioModule,
+    MatButtonToggleModule,
+    MatCheckboxModule
 
   ],
 })
