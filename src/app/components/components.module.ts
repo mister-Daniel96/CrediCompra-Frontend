@@ -12,7 +12,6 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { MispagosComponent } from './cliente/mispagos/mispagos.component';
 import { MiInfoComponent } from './cliente/mi-info/mi-info.component';
 import { DashboardComponent } from './administrador/dashboard/dashboard.component';
-import { CalcularTasasComponent } from './administrador/calcular-tasas/calcular-tasas.component';
 import { ProximosPagosComponent } from './administrador/proximos-pagos/proximos-pagos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListarClientesComponent } from './administrador/listar-clientes/listar-clientes.component';
@@ -31,6 +30,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { CrearCreditoComponent } from './administrador/crear-credito/crear-credito.component';
 
 
 @NgModule({
@@ -40,10 +40,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MispagosComponent,
     MiInfoComponent,
     DashboardComponent,
-    CalcularTasasComponent,
     ProximosPagosComponent,
     ListarClientesComponent,
     RegistrarEditarClientesComponent,
+    CrearCreditoComponent,
       ],
   imports: [
     CommonModule,

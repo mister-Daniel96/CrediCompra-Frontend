@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .example-form {
+    display: ruby-text;
+  }
+  
+  .button-guardar {
+    margin: 0 0 20px 20px;
+  }
+  
+  table {
+    background-color: #4F5162;
+    color: grey;
+    width: 100%;
+  }
+  
+  .formContainer {
+    width: 30%;
+    margin: 10px 40px;
+  
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .listContainer {
+    width: 50%;
+  }
+  
+  .tableDiv {
+    width: 100%;
+    height: 75vh;
+    overflow-y: scroll;
+  }
+  
+  .imprimir {
+    width: 160px;
+    display: block;
+    background-color: whitesmoke;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.2s all;
+    margin-left: auto;
+    margin-right: 40px;
+  
+  }
+  
+  .imprimir:hover {
+    background-color: rgb(28, 146, 28);
+    color: whitesmoke;
+    transform: scale(1.1);
+  }
+  
+  .cabecera {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  
+  
+  /* Estilo para el scroll en navegadores basados en Webkit */
+  .tableDiv::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .tableDiv::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+  
+  .tableDiv::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  
+  .tableDiv::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 10px;
+  }
