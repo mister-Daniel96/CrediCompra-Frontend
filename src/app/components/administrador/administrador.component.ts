@@ -24,7 +24,7 @@ export class AdministradorComponent implements OnInit {
 
   botones = [
     { texto: 'Dashboard', ruta: 'dashboard', icon: './assets/images/dashboard.png' },
-    { texto: 'Registrar credito', ruta: 'calcularTasas', icon: './assets/images/calculadora.png' },
+    { texto: 'Registrar credito', ruta: 'crearCredito', icon: './assets/images/calculadora.png' },
     { texto: 'Proximos pagos', ruta: 'proximosPagos', icon: './assets/images/pagos.png' },
     { texto: 'Listar Clientes', ruta: 'listarClientes', icon: './assets/images/cuentas.png' }
   ];

@@ -6,10 +6,10 @@ import { AdministradorComponent } from './administrador/administrador.component'
 import { MispagosComponent } from './cliente/mispagos/mispagos.component';
 import { MiInfoComponent } from './cliente/mi-info/mi-info.component';
 import { DashboardComponent } from './administrador/dashboard/dashboard.component';
-import { CalcularTasasComponent } from './administrador/calcular-tasas/calcular-tasas.component';
 import { ProximosPagosComponent } from './administrador/proximos-pagos/proximos-pagos.component';
 import { ListarClientesComponent } from './administrador/listar-clientes/listar-clientes.component';
 import { RegistrarEditarClientesComponent } from './administrador/registrar-editar-clientes/registrar-editar-clientes.component';
+import { CrearCreditoComponent } from './administrador/crear-credito/crear-credito.component';
 
 const routes: Routes = [
   {
@@ -35,8 +35,8 @@ const routes: Routes = [
         component: DashboardComponent,
       },
       {
-        path: 'calcularTasas',
-        component: CalcularTasasComponent,
+        path: 'crearCredito',
+        component: CrearCreditoComponent,
       },
       {
         path: 'proximosPagos',

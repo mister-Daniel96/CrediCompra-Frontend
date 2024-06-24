@@ -3,19 +3,19 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
-
 export class DashboardComponent {
-  displayedColumnsHPagos: string[] = [ 'fecha', 'cliente', 'monto'];
-  displayedColumnsPPagos: string[] = [ 'cliente', 'fecha', 'monto'];
+  displayedColumnsHPagos: string[] = ['fecha', 'cliente', 'monto'];
+  displayedColumnsPPagos: string[] = ['cliente', 'fecha', 'monto'];
   dataSourceHPagos = DataHistorialPagos;
+  data:number=5;
 }
-  export interface HistorialdePagos {
-    fecha: string;
-    cliente: string;
-    monto: number;
-  }
+export interface HistorialdePagos {
+  fecha: string;
+  cliente: string;
+  monto: number;
+}
 
 const DataHistorialPagos: HistorialdePagos[] = [
   { fecha: '15/05/2023', cliente: 'Juan Pérez', monto: 500 },
