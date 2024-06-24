@@ -34,6 +34,10 @@ export class CalcularTasasComponent implements OnInit {
     { value: 6, viewValue: '6' },
   ];
   checked = false;
+
+  showDatePicker: boolean = false;
+  showDuration: boolean = true;
+
   constructor(
     private formBuilder: FormBuilder,
     private uS: UsuarioService,
@@ -42,32 +46,65 @@ export class CalcularTasasComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
-  
+
   ngOnInit(): void {
-    console.log(this.listaUsuarios);
     this.form = this.formBuilder.group({
       nameUsuario: ['', Validators.required],
-      interestRate: [Validators.required],
-      duration: [Validators.required],
-      currentValue: [Validators.required],
-      annuities: [Validators.required],
+      interestRate: ['', Validators.required],
+      duration: ['', Validators.required],
+      currentValue: ['', Validators.required],
+      annuities: [true, Validators.required], // Valor por defecto: true (Con Anualidad)
+      dateExpiration: [null], // Inicialmente null
     });
+
     this.uS.list().subscribe((data) => {
-      this.listaUsuarios = data; //paso todos los datos a la data
+      this.listaUsuarios = data; // Paso todos los datos a la data
     });
+
+    // Subscribirse a cambios en el campo de 'annuities'
+    this.form.get('annuities')?.valueChanges.subscribe(value => {
+      this.onAnnuityChange(value);
+    });
+
+    // Configurar el formulario según el valor inicial de 'annuities'
+    this.onAnnuityChange(this.form.get('annuities')?.value);
   }
+
+  onAnnuityChange(value: boolean): void {
+    if (value) {
+      // Con Anualidad
+      this.showDatePicker = false;
+      this.form.get('dateExpiration')?.setValue(null); // Asignar null a dateExpiration
+      this.form.get('dateExpiration')?.clearValidators();
+      this.form.get('dateExpiration')?.updateValueAndValidity();
+
+      this.showDuration = true;
+      this.form.get('duration')?.setValidators(Validators.required);
+      this.form.get('duration')?.updateValueAndValidity();
+    } else {
+      // Sin Anualidad
+      this.showDatePicker = true;
+      this.form.get('dateExpiration')?.setValidators(Validators.required);
+      this.form.get('dateExpiration')?.updateValueAndValidity();
+
+      this.showDuration = false;
+      this.form.get('duration')?.setValue(null); // Asignar null a duration
+      this.form.get('duration')?.clearValidators();
+      this.form.get('duration')?.updateValueAndValidity();
+    }
+  }
+
   aceptar(): void {
     if (this.form.valid) {
       this.cred.usuario.idUsuario = this.form.value.nameUsuario;
       this.cred.interestRate = this.form.value.interestRate;
       this.cred.duration = this.form.value.duration;
-      this.cred.dateRecorder = new Date(Date.now()); //no importa porque sera mandado por el backend
-      this.cred.dateExpiration = this.form.value.dateExpiration;
+      this.cred.dateRecorder = new Date(Date.now()); // No importa porque sera mandado por el backend
+      this.cred.dateExpiration = this.form.value.dateExpiration; // Asegúrate de acceder correctamente a este valor
       this.cred.currentValue = this.form.value.currentValue;
       this.cred.remainingAmount = this.form.value.currentValue;
       this.cred.annuities = this.form.value.annuities;
       this.cred.enableCredito = true;
-      this.cred.annuities = this.form.value.annuities;
 
       console.log(this.cred);
       this.cS.insert(this.cred).subscribe((data) => {
@@ -79,9 +116,5 @@ export class CalcularTasasComponent implements OnInit {
     } else {
       this.mensaje = 'Ingrese todos los campos!!';
     }
-  }
-
-  toggle(){
-    
   }
 }
