@@ -37,11 +37,17 @@ export class CrearCreditoComponent {
     { value: 5, viewValue: '5' },
     { value: 6, viewValue: '6' },
   ];
+  gracePeriods: { value: number; viewValue: string }[] = [
+    { value: 0, viewValue: '0' },
+    { value: 1, viewValue: '1' },
+    { value: 2, viewValue: '2' },
+  ];
+  
   checked = false;
 
   showDatePicker: boolean = false;
   showDuration: boolean = true;
-
+  showGracePeriod: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private uS: UsuarioService,
@@ -59,6 +65,7 @@ export class CrearCreditoComponent {
       currentValue: ['', Validators.required],
       annuities: [true, Validators.required], // Valor por defecto: true (Con Anualidad)
       dateExpiration: [null], // Inicialmente null
+      gracePeriod: [null] // Inicialmente null
     });
 
     this.uS.list().subscribe((data) => {
@@ -87,6 +94,10 @@ export class CrearCreditoComponent {
       this.showDuration = true;
       this.form.get('duration')?.setValidators(Validators.required);
       this.form.get('duration')?.updateValueAndValidity();
+
+      this.showGracePeriod = true;
+      this.form.get('gracePeriod')?.setValidators(Validators.required);
+      this.form.get('gracePeriod')?.updateValueAndValidity();
     } else {
       // Sin Anualidad
       this.showDatePicker = true;
@@ -97,6 +108,11 @@ export class CrearCreditoComponent {
       this.form.get('duration')?.setValue(null); // Asignar null a duration
       this.form.get('duration')?.clearValidators();
       this.form.get('duration')?.updateValueAndValidity();
+      
+      this.showGracePeriod = false;
+      this.form.get('gracePeriod')?.setValue(0); // Asignar 0 a gracePeriod
+      this.form.get('gracePeriod')?.clearValidators();
+      this.form.get('gracePeriod')?.updateValueAndValidity();
     }
   }
 
@@ -111,6 +127,7 @@ export class CrearCreditoComponent {
       this.cred.remainingAmount = this.form.value.currentValue;
       this.cred.annuities = this.form.value.annuities;
       this.cred.enableCredito = true;
+      this.cred.gracePeriod=this.form.value.gracePeriod;
 
       console.log(this.cred);
       this.cS.insert(this.cred).subscribe((data) => {

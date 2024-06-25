@@ -33,6 +33,7 @@ export class ProximosPagosComponent implements OnInit {
         this.pS.list().subscribe((data) => {
           this.pS.setList(data);
         });
+        this.ngOnInit()
       });
     });
   }

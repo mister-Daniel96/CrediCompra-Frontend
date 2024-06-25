@@ -43,6 +43,15 @@
             </mat-select>
           </mat-form-field>
   
+          <mat-form-field *ngIf="showGracePeriod">
+            <mat-label>Período de gracia (meses)</mat-label>
+            <mat-select formControlName="gracePeriod">
+              <mat-option *ngFor="let period of gracePeriods" [value]="period.value">
+                {{ period.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
           <mat-form-field *ngIf="showDatePicker" appearance="fill" class="example-full-width">
             <input matInput placeholder="MM/DD/YYYY" [matDatepicker]="picker" formControlName="dateExpiration"
               [min]="maxFecha">

@@ -10,6 +10,7 @@ export class credito{
     remainingAmount:number=0;
     annuities:Boolean=false;
     enableCredito:Boolean=false;
+    gracePeriod:number=0;
     usuario:Usuario=new Usuario();
 }
 
