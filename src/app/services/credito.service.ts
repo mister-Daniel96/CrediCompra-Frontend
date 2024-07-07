@@ -48,4 +48,20 @@ export class CreditoService {
   getList() {
     return this.listaCambio.asObservable();
   }
+  update(credito:credito){
+    let token=sessionStorage.getItem('token');
+    return this.http.put(this.url,credito,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json')
+    })
+  }
+  listId(id: number) {
+    let token = sessionStorage.getItem('token');
+    return this.http.get<credito>(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }

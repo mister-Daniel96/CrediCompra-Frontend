@@ -4,26 +4,37 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
+import { Observable, map, switchMap, tap } from 'rxjs';
 import { credito } from 'src/app/models/credito';
+import { pago } from 'src/app/models/pago';
 import { Usuario } from 'src/app/models/usuario';
 import { CreditoService } from 'src/app/services/credito.service';
+import { PagoService } from 'src/app/services/pago.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-crear-credito',
   templateUrl: './crear-credito.component.html',
-  styleUrls: ['./crear-credito.component.css']
+  styleUrls: ['./crear-credito.component.css'],
 })
 export class CrearCreditoComponent {
   form: FormGroup = new FormGroup({});
-
+  creditoRecuperado: credito = new credito();
+  pagoCredito: pago = new pago();
   cred: credito = new credito();
   mensaje: string = '';
   listaUsuarios: Usuario[] = [];
+  listaPagos: pago[] = [];
   maxFecha: Date = moment().add(+1, 'days').toDate();
   dataSource: MatTableDataSource<credito> = new MatTableDataSource();
-  displayedColumns: string[] = ['currentValue', 'nameUsuario', 'dateRecorded',"numeroCuotas"];
+  displayedColumns: string[] = [
+    'currentValue',
+    'nameUsuario',
+    'dateRecorded',
+    'numeroCuotas',
+    'pagar',
+  ];
 
   typesAnnuities: { value: Boolean; viewValue: string }[] = [
     { value: true, viewValue: 'Con Anualidad' },
@@ -42,7 +53,7 @@ export class CrearCreditoComponent {
     { value: 1, viewValue: '1' },
     { value: 2, viewValue: '2' },
   ];
-  
+
   checked = false;
 
   showDatePicker: boolean = false;
@@ -54,7 +65,8 @@ export class CrearCreditoComponent {
     private cS: CreditoService,
     private snackbar: MatSnackBar,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private pS: PagoService
   ) {}
 
   ngOnInit(): void {
@@ -65,7 +77,7 @@ export class CrearCreditoComponent {
       currentValue: ['', Validators.required],
       annuities: [true, Validators.required], // Valor por defecto: true (Con Anualidad)
       dateExpiration: [null], // Inicialmente null
-      gracePeriod: [null] // Inicialmente null
+      gracePeriod: [null], // Inicialmente null
     });
 
     this.uS.list().subscribe((data) => {
@@ -108,7 +120,7 @@ export class CrearCreditoComponent {
       this.form.get('duration')?.setValue(null); // Asignar null a duration
       this.form.get('duration')?.clearValidators();
       this.form.get('duration')?.updateValueAndValidity();
-      
+
       this.showGracePeriod = false;
       this.form.get('gracePeriod')?.setValue(0); // Asignar 0 a gracePeriod
       this.form.get('gracePeriod')?.clearValidators();
@@ -127,7 +139,7 @@ export class CrearCreditoComponent {
       this.cred.remainingAmount = this.form.value.currentValue;
       this.cred.annuities = this.form.value.annuities;
       this.cred.enableCredito = true;
-      this.cred.gracePeriod=this.form.value.gracePeriod;
+      this.cred.gracePeriod = this.form.value.gracePeriod;
 
       console.log(this.cred);
       this.cS.insert(this.cred).subscribe((data) => {
@@ -135,8 +147,7 @@ export class CrearCreditoComponent {
           this.cS.setList(data);
         });
       });
-       /*  this.router.navigate(['components/administrador/:id']);  */
-      
+      /*  this.router.navigate(['components/administrador/:id']);  */
     } else {
       this.mensaje = 'Ingrese todos los campos!!';
     }
@@ -163,4 +174,60 @@ export class CrearCreditoComponent {
     });
     console.log(this.dataSource);
   }
+  //=======================================================
+  pagarTodo(id: number) {
+    this.cS.listId(id).pipe(
+      tap(data => {
+        this.creditoRecuperado = data;
+        this.crearPago(this.creditoRecuperado);
+        this.creditoRecuperado.enableCredito = false;
+      }),
+      switchMap(credito => this.cS.update(credito)),
+      switchMap(() => this.cS.list())
+    ).subscribe(data => {
+      this.cS.setList(data);
+    });
+  }
+
+  crearPago(credito: any) { // Asegúrate de ajustar el tipo adecuadamente
+    this.recuperarPagos(credito.idCredito).subscribe(data => {
+      this.listaPagos = data;
+
+      let vna: number = 0;
+      this.listaPagos.forEach((x, index) => {
+        let calculo = x.amountPago / Math.pow((1 + (x.credito.interestRate / 100)), index);
+        vna += calculo;
+      });
+
+      this.pagoCredito.amountPago = vna;
+      this.pagoCredito.credito.idCredito = credito.idCredito;
+      this.pagoCredito.enablePago = false;
+      this.pagoCredito.dateExpiration = credito.dateExpiration;
+      this.pagoCredito.dateRecorded = credito.dateRecorded;
+
+      this.pS.insert(this.pagoCredito).pipe(
+        switchMap(() => this.pS.list())
+      ).subscribe(data => {
+        this.pS.setList(data);
+        
+        // Para eliminar los pagos después de insertar el nuevo pago
+        this.listaPagos.forEach(x => {
+          this.pS.delete(x.idPago).pipe(
+            switchMap(() => this.pS.list())
+          ).subscribe(data => {
+            this.pS.setList(data);
+          });
+        });
+      });
+    });
+  }
+
+  recuperarPagos(id: number): Observable<pago[]> {
+    return this.pS.list().pipe(
+      map((data) => {
+        return data.filter((x) => x.credito.idCredito === id && x.credito.enableCredito === true);
+      })
+    );
+  }
 }
+

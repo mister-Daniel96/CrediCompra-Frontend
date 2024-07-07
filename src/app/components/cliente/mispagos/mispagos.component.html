@@ -1,3 +1,58 @@
-<p>mispagos works!</p>
+<!-- component -->
+<ul role="list"
+    class="tableDiv grid grid-cols-1 gap-6 sm:grid-cols-1 lg:grid-cols-2 p-10 w-[80%] h-[80vh] overflow-y-scroll m-auto ">
+    <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow " *ngFor="let element of listaPagos">
+        <div class="flex w-full items-center justify-between space-x-6 p-6">
+            <div class="flex-1 truncate">
+                <div class="flex items-center space-x-3 ">
+                    <h3 class="truncate text-sm font-medium text-gray-900">{{"S/."+element.amountPago.toFixed(2)}}</h3>
+                    <div>
+                        <span *ngIf="element.enablePago"
+                            class="inline-flex flex-shrink-0 items-center rounded-full bg-yellow-100 px-5 py-2 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20">Pendiente</span>
+                        <span *ngIf="!element.enablePago"
+                            class="inline-flex flex-shrink-0 items-center rounded-full bg-red-100  px-5 py-2 text-xs font-medium text-red-600 ring-1 ring-inset ring-red-600/20">Cancelado</span>
+                    </div>
 
-<h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore facilis dignissimos nostrum voluptates ratione, inventore consectetur quod, minima, natus amet doloribus! Soluta ipsum odit est atque ex velit molestiae, recusandae beatae blanditiis in possimus earum voluptas temporibus obcaecati vel, ab iusto reiciendis architecto deleniti, sit necessitatibus! Veritatis tempore eveniet itaque, dignissimos nemo nulla alias, eligendi corrupti odit corporis doloribus excepturi laborum ex aut assumenda. Facere excepturi autem debitis cupiditate iste numquam maiores culpa, alias corporis odit, nesciunt voluptate molestias, deserunt labore officia reprehenderit provident eum temporibus inventore! Laborum a autem aut. Ex nulla quidem non necessitatibus iure quasi, laboriosam voluptates!</h1>
+                </div>
+                <p class="mt-1 truncate text-sm text-gray-500">{{"Cliente: "+element.credito.usuario.nameUsuario}}</p>
+                <p class="mt-1 truncate text-sm text-gray-500">{{"F.vencimiento: "+(element.dateExpiration|date)}}</p>
+            </div>
+            <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
+                src="../../../../assets/images/acquisition-fee-icon-vector.jpg" alt="">
+        </div>
+        <div>
+            <div class="-mt-px flex divide-x divide-gray-200">
+                <div class="flex w-0 flex-1 ">
+                    <!-- <a href="howpossible17@example.com"
+                        class="relative -mr-px inline-flex w-0 flex-1  items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
+                        <i class="fa-solid fa-money-bill-1"></i>
+                        Pagar
+                    </a> -->
+                    <div *ngIf="element.enablePago">
+                        <button (click)="realizarPago(element.idPago)"
+                            class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded w-[100%]">
+                            Pagar
+
+                        </button>
+                    </div>
+
+
+
+                </div>
+                <div class="-ml-px flex w-0 flex-1">
+                    <!-- <a href="tel:+1-202-555-0170"
+                        class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
+                        <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Call
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </li>
+
+    <!-- More people... -->
+</ul>

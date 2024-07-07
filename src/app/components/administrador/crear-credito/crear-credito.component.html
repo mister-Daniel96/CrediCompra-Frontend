@@ -1,102 +1,112 @@
 <div>
-    <button (click)="exportarExcel()" class="imprimir">Exportar <i class="fa-solid fa-download"></i></button>
-  
-    <div class="container">
-      <div class="formContainer">
-        <form class="example-form table-form form" [formGroup]="form" (submit)="aceptar()">
-          <mat-form-field>
-            <mat-label>Cliente</mat-label>
-            <mat-select formControlName="nameUsuario">
-              <mat-option *ngFor="let g of listaUsuarios" [value]="g.idUsuario">
-                {{ g.nameUsuario }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-  
-          <mat-form-field class="example-full-width">
-            <mat-label>Interes - TEM</mat-label>
-            <input formControlName="interestRate" matInput type="number" class="example-right-align" placeholder="%">
-          </mat-form-field>
-  
-          <mat-form-field *ngIf="showDuration">
-            <mat-label>Nro. de meses</mat-label>
-            <mat-select formControlName="duration">
-              <mat-option *ngFor="let g of NroMonth" [value]="g.value">
-                {{ g.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-  
-          <mat-form-field floatLabel="always" class="example-full-width">
-            <mat-label>Monto</mat-label>
-            <input formControlName="currentValue" matInput type="number" class="example-right-align" placeholder="0">
-            <span matTextPrefix>$&nbsp;</span>
-            <span matTextSuffix>.00</span>
-          </mat-form-field>
-  
-          <mat-form-field>
-            <mat-label>Anualidad</mat-label>
-            <mat-select formControlName="annuities">
-              <mat-option *ngFor="let g of typesAnnuities" [value]="g.value">
-                {{ g.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-  
-          <mat-form-field *ngIf="showGracePeriod">
-            <mat-label>Período de gracia (meses)</mat-label>
-            <mat-select formControlName="gracePeriod">
-              <mat-option *ngFor="let period of gracePeriods" [value]="period.value">
-                {{ period.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+  <button (click)="exportarExcel()" class="imprimir">Exportar <i class="fa-solid fa-download"></i></button>
 
-          <mat-form-field *ngIf="showDatePicker" appearance="fill" class="example-full-width">
-            <input matInput placeholder="MM/DD/YYYY" [matDatepicker]="picker" formControlName="dateExpiration"
-              [min]="maxFecha">
-            <!--    <mat-hint>MM/DD/YYYY</mat-hint> -->
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-  
-          <button mat-raised-button color="primary" type="submit">
-            Guardar
-          </button>
-        </form>
-      </div>
-      <div class="listContainer">
-  
-        <div class="mat-elevation-z8" class="tableDiv">
-          <table mat-table [dataSource]="dataSource" id="table-data">
-  
-            <ng-container matColumnDef="currentValue">
-              <th mat-header-cell *matHeaderCellDef> Monto </th>
-              <td mat-cell *matCellDef="let element"> {{"S/."+element.currentValue}} </td>
-            </ng-container>
-            <ng-container matColumnDef="nameUsuario">
-              <th mat-header-cell *matHeaderCellDef> Usuario </th>
-              <td mat-cell *matCellDef="let element"> {{element.usuario.nameUsuario}} </td>
-            </ng-container>
-            <ng-container matColumnDef="dateRecorded">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> F. Registro </th>
-              <td mat-cell *matCellDef="let element">
-                {{element.dateRecorded |date}}
-              </td>
-            </ng-container>
-            <ng-container matColumnDef="numeroCuotas">
-              <th mat-header-cell *matHeaderCellDef> # Cuotas </th>
-              <td mat-cell *matCellDef="let element"> {{(element.duration||"1" )+" cuotas"}}</td>
-  
-            </ng-container>
-  
-            <tr mat-header-row *matHeaderRowDef="displayedColumns" style="color: #ffeeeea9;" class="cabecera"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns; " style="color: rgba(245, 245, 220, 0.644);"></tr>
-          </table>
-  
-        </div>
-      </div>
-  
-  
+  <div class="container">
+    <div class="formContainer">
+      <form class="example-form table-form form" [formGroup]="form" (submit)="aceptar()">
+        <mat-form-field>
+          <mat-label>Cliente</mat-label>
+          <mat-select formControlName="nameUsuario">
+            <mat-option *ngFor="let g of listaUsuarios" [value]="g.idUsuario">
+              {{ g.nameUsuario }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Interes - TEM</mat-label>
+          <input formControlName="interestRate" matInput type="number" class="example-right-align" placeholder="%">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="showDuration">
+          <mat-label>Nro. de meses</mat-label>
+          <mat-select formControlName="duration">
+            <mat-option *ngFor="let g of NroMonth" [value]="g.value">
+              {{ g.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="example-full-width">
+          <mat-label>Monto</mat-label>
+          <input formControlName="currentValue" matInput type="number" class="example-right-align" placeholder="0">
+          <span matTextPrefix>$&nbsp;</span>
+          <span matTextSuffix>.00</span>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Anualidad</mat-label>
+          <mat-select formControlName="annuities">
+            <mat-option *ngFor="let g of typesAnnuities" [value]="g.value">
+              {{ g.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="showGracePeriod">
+          <mat-label>Período de gracia (meses)</mat-label>
+          <mat-select formControlName="gracePeriod">
+            <mat-option *ngFor="let period of gracePeriods" [value]="period.value">
+              {{ period.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="showDatePicker" appearance="fill" class="example-full-width">
+          <input matInput placeholder="MM/DD/YYYY" [matDatepicker]="picker" formControlName="dateExpiration"
+            [min]="maxFecha">
+          <!--    <mat-hint>MM/DD/YYYY</mat-hint> -->
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Guardar
+        </button>
+      </form>
     </div>
+    <div class="listContainer">
+
+      <div class="mat-elevation-z8" class="tableDiv">
+        <table mat-table [dataSource]="dataSource" id="table-data">
+
+          <ng-container matColumnDef="currentValue">
+            <th mat-header-cell *matHeaderCellDef> Monto </th>
+            <td mat-cell *matCellDef="let element"> {{"S/."+element.currentValue}} </td>
+          </ng-container>
+          <ng-container matColumnDef="nameUsuario">
+            <th mat-header-cell *matHeaderCellDef> Usuario </th>
+            <td mat-cell *matCellDef="let element"> {{element.usuario.nameUsuario}} </td>
+          </ng-container>
+          <ng-container matColumnDef="dateRecorded">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> F. Registro </th>
+            <td mat-cell *matCellDef="let element">
+              {{element.dateRecorded |date}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="numeroCuotas">
+            <th mat-header-cell *matHeaderCellDef> # Cuotas </th>
+            <td mat-cell *matCellDef="let element"> {{(element.duration||"1" )+" cuotas"}}</td>
+
+          </ng-container>
+          <ng-container matColumnDef="pagar">
+            <th mat-header-cell *matHeaderCellDef> # Cuotas </th>
+            <td mat-cell *matCellDef="let element">
+
+              <div *ngIf="element.enableCredito">
+                <button color="warn" (click)="pagarTodo(element.idCredito)" mat-raised-button>Pagar</button>
+              </div>
+            </td>
+
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns" style="color: #ffeeeea9;" class="cabecera"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns; " style="color: rgba(245, 245, 220, 0.644);"></tr>
+        </table>
+
+      </div>
+    </div>
+
+
   </div>
+</div>

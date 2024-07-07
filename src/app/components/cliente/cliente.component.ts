@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
@@ -15,7 +15,7 @@ export class ClienteComponent {
   id: number = 0;
   private breakpointObserver = inject(BreakpointObserver);
   @ViewChild('drawer') drawer!: MatSidenav;
-  constructor(public route: ActivatedRoute) {}
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -23,21 +23,28 @@ export class ClienteComponent {
       shareReplay()
     );
 
+  botones = [
+    { texto: 'Proximos pagos', ruta: 'mispagos', icon: './assets/images/pagos.png' }  ];
+
+  constructor(public route: ActivatedRoute, private router: Router) {}
+
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
-      this.id = data['id'];
+      this.id = +data['id'];
     });
   }
 
   cerrar() {
     sessionStorage.clear();
   }
+
   toggleSidenav(): void {
     if (window.innerWidth < 960) {
-      // Verifica si el ancho de la ventana es menor que 960px
-      this.drawer.toggle(); // Si es menor, toggla el sidenav
+      this.drawer.toggle();
     }
   }
-  // Declara drawer como ViewChild de MatSidenav
-  //Se crea la funcion toggleSidenav y se agrega en cada boton
+
+  isLinkActive(ruta: string): boolean {
+    return this.router.url.includes(ruta);
+  }
 }
